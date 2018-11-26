@@ -1,18 +1,25 @@
-import discord, os
-from discord.ext import commands
+import os, discord
+from discord.ext.commands import Bot
 
-bot = commands.Bot(command_prefix='$')
-TOKEN = os.environ['token']
+# We'll need to substitute the Prefix for an Enviroment Variable
+BOT_PREFIX = os.environ['prefix'] # -Prfix is need to declare a Command in discord ex: !pizza "!" being the Prefix
+TOKEN = os.environ['token'] # The token is also substituted for security reasons
 
-@bot.event
+client = Bot(command_prefix=BOT_PREFIX)
+
+# this is an event which is triggered when something happens in Discord 
+# in this case on_ready() is called when the bot logs on
+#you can checkthe Discord API Documentaion for more event Functions 
+# here: https://discordapp.com/developers
+
+@client.event
 async def on_ready():
     print('Logged in as')
-    print(bot.user.name)
-    print(bot.user.id)
+    print(client.user.name)
+    print(client.user.id)
     print('------')
+    await client.change_presence(game=discord.Game(name="--Insert-Game-name-here--"))
+    
+# below this line you can put custom Functions
 
-@bot.command()
-async def greet(ctx):
-    await ctx.send(":smiley: :wave: Hello, there!")
-
-bot.run(TOKEN)
+client.run(TOKEN)
