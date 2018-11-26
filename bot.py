@@ -1,7 +1,6 @@
 import  random
 import discord
 from discord.ext.commands import Bot
-BOT_PREFIX = "/"
 client = Bot(command_prefix=BOT_PREFIX)
 
 @client.command()
@@ -61,4 +60,10 @@ async def subtract(left: int, right: int):
 async def square(num : int):
     await client.say(num*num)
 
+    
+@client.event
+async def on_ready()
+   print("Ready")
+    
+    
 client.run(TOKEN)
