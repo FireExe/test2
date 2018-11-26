@@ -1,7 +1,8 @@
-import discord
+import discord, os
 from discord.ext import commands
 
 bot = commands.Bot(command_prefix='$')
+TOKEN = os.environ['token']
 
 @bot.event
 async def on_ready():
@@ -14,4 +15,4 @@ async def on_ready():
 async def greet(ctx):
     await ctx.send(":smiley: :wave: Hello, there!")
 
-bot.run(process.env.TOKEN)
+bot.run(TOKEN)
