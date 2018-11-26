@@ -2,7 +2,6 @@ import  random
 import discord
 from discord.ext.commands import Bot
 BOT_PREFIX = "/"
-TOKEN = "NTE1NTYyNDg5NzMyMjY4MDQy.DtoK6g.TcD8zhnblyEoD5iedR0XZpnZA9Y"
 client = Bot(command_prefix=BOT_PREFIX)
 
 @client.command()
