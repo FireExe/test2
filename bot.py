@@ -22,7 +22,7 @@ async def on_ready():
     
 # below this line you can put custom Functions
 @client.command()
-async def roasts():
+async def roasts(ctx):
     choices = [
      "You have some egg head shape",
      "The top of your head is a dome",
