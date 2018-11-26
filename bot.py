@@ -14,6 +14,4 @@ async def on_ready():
 async def greet(ctx):
     await ctx.send(":smiley: :wave: Hello, there!")
 
-import os
-access_token= os.environ["TOKEN"]
-bot.run(access_token)
+bot.run(process.env.TOKEN)
