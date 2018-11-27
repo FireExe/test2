@@ -40,41 +40,34 @@ async def roasts(ctx):
     ]
     await ctx.send(random.choice(choices))
 
-
-@client.event
-async def on_member_join(member):
-    server = member.server
-    fmt = 'Welcome {0.mention} to {1.name}!'
-    await client.send_message(server, fmt.format(member, server))
+    
+@client.command()
+async def version(ctx):
+    await ctx.send("Elemental Soul Bot v.01 by >Fire.Exe")
 
 
 @client.command()
-async def version():
-    await client.say("Elemental Soul Bot v.01 by >Fire.Exe")
+async def add(ctx, left : int, right : int):
+    await ctx.send(left + right)
 
 
 @client.command()
-async def add(left : int, right : int):
-    await client.say(left + right)
+async def divide(ctx, left : int, right : int):
+    await ctx.send(left / right)
 
 
 @client.command()
-async def divide(left : int, right : int):
-    await client.say(left / right)
+async def multiply(ctx, left : int, right : int):
+    await ctx.send(left * right)
 
 
 @client.command()
-async def multiply(left : int, right : int):
-    await client.say(left * right)
+async def subtract(ctx, left: int, right: int):
+        await ctx.send(left - right)
 
 
 @client.command()
-async def subtract(left: int, right: int):
-        await client.say(left - right)
-
-
-@client.command()
-async def square(num : int):
-    await client.say(num*num)
+async def square(ctx, num : int):
+    await ctx.send(num*num)
 
 client.run(TOKEN)
