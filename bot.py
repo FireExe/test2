@@ -1,4 +1,4 @@
-import os, discord
+import os, discord, random
 from discord.ext.commands import Bot
 
 # We'll need to substitute the Prefix for an Enviroment Variable
