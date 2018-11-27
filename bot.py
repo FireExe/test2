@@ -38,7 +38,7 @@ async def roasts(ctx):
      "It's a waste of time trying to cuss something so irrelevant",
      "Nooooob"
     ]
-    await message.channel.send(random.choice(choices))
+    await ctx.send(random.choice(choices))
 
 
 @client.event
