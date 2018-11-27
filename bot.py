@@ -18,7 +18,7 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print('------')
-    await client.change_presence(game=discord.Game(name='Elemental Soul Servers'))
+    await client.change_presence("Elemental Soul Servers")
     
 # below this line you can put custom Functions
 @client.command()
