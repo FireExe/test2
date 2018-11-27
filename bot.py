@@ -28,7 +28,7 @@ async def roasts(ctx):
      "The top of your head is a dome",
      "You need to fix that head shape of yours",
      "Your unseasoned",
-     "You have the default ghanaian head shape",
+     "You have the Rthro head shape",
      "Your lips are drier then the sahara",
      "Your knees are ashier then the skin of kfc chicken",
      "What is {0.author.mention}, that name is so unoriginal",
