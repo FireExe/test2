@@ -75,7 +75,7 @@ async def square(ctx, num : int):
 @client.command(pass_content=True)
 async def assign(ctx, left: str):
         user = ctx.message.author
-        role = discord.utils.get(user.server.roles, name="Nopartnerpings")
+        role = discord.utils.get(client.server.roles, name="Nopartnerpings")
         if left  == "Nopartnerpings":
           await ctx.send("You now have "+left+ str(user.name))
           await client.add_roles(user, role)
