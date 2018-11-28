@@ -17,6 +17,7 @@ async def on_ready():
     print('Logged in as')
     print(client.user.name)
     print(client.user.id)
+    print(discord._version)
     print('------')
     
     
