@@ -78,6 +78,5 @@ async def assign(ctx, left: str):
         user = ctx.message.author
         if left  == "Nopartnerpings":
           await ctx.send("You now have "+left+" {0}".format(round(bot.latency, 1))
-          print(left)
 
 client.run(TOKEN)
