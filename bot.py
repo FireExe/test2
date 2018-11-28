@@ -76,7 +76,7 @@ async def square(ctx, num : int):
 async def assign(ctx, left: str):
         role = discord.utils.get(ctx.guild.roles, name = left)
         user = ctx.message.author
-        if left  == "No partner pings":
+        if left  == "Nopartnerpings":
           await ctx.send("You now have"+left)
           print(left)
 
