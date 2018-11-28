@@ -72,11 +72,12 @@ async def square(ctx, num : int):
     await ctx.send(num*num)
     
     
-@client.command()
+@client.command(pass_content=True)
 async def assign(ctx, left: str):
         role = discord.utils.get(ctx.guild.roles, name = left)
         user = ctx.message.author
         if left  == "Nopartnerpings":
-          await ctx.send("You now have "+left+ user)
+          await ctx.send("You now have "+left+ str(user))
+          await ctx.add_roles(user, role)
 
 client.run(TOKEN)
