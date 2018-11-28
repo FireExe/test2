@@ -70,5 +70,12 @@ async def subtract(ctx, left: int, right: int):
 @client.command()
 async def square(ctx, num : int):
     await ctx.send(num*num)
+    
+    
+ @client.command()
+async def assign(ctx, left: str):
+        role = discord.utils.get(ctx.guild.roles, name = left)
+        user = ctx.message.author
+        await ctx.send("You now have"+left)
 
 client.run(TOKEN)
