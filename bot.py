@@ -72,7 +72,7 @@ async def square(ctx, num : int):
     await ctx.send(num*num)
     
     
- @client.command()
+@client.command()
 async def assign(ctx, left: str):
         role = discord.utils.get(ctx.guild.roles, name = left)
         user = ctx.message.author
