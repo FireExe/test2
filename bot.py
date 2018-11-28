@@ -6,6 +6,7 @@ BOT_PREFIX = os.environ['prefix'] # -Prfix is need to declare a Command in disco
 TOKEN = os.environ['token'] # The token is also substituted for security reasons
 
 client = Bot(command_prefix=BOT_PREFIX)
+server = client.server
 
 # this is an event which is triggered when something happens in Discord 
 # in this case on_ready() is called when the bot logs on
@@ -75,7 +76,6 @@ async def square(ctx, num : int):
 @client.command(pass_content=True)
 async def assign(ctx, left: str):
         user = ctx.message.author
-        server = ctx.message.server
         roleid = "516321753870630922"
         role = discord.utils.get(server.roles,id=roleid)
         if left  == "Nopartnerpings":
