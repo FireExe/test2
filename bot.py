@@ -80,6 +80,6 @@ async def assign(ctx, left: str):
         role = discord.utils.get(server.roles, name=left)
         if left  == "Nopartnerpings":
           await ctx.send("You now have "+left+ str(user.name))
-          await ctx.add_roles(role)
+          await user.add_roles(role)
 
 client.run(TOKEN)
