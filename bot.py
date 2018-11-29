@@ -82,7 +82,7 @@ async def assign(ctx, left: str):
           await user.add_roles(role)
             
      
- @client.command(pass_content=True)
+@client.command(pass_content=True)
 async def unassign(ctx, left: str):
         user = ctx.message.author
         server = ctx.message.guild
