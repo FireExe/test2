@@ -75,11 +75,20 @@ async def square(ctx, num : int):
 @client.command(pass_content=True)
 async def assign(ctx, left: str):
         user = ctx.message.author
-        roleid = "516321753870630922"
         server = ctx.message.guild
         role = discord.utils.get(server.roles, name=left)
         if left  == "Nopartnerpings":
-          await ctx.send("You now have "+left+ str(user.name))
+          await ctx.send("You now have "+left+ str( user.name))
           await user.add_roles(role)
+            
+     
+ @client.command(pass_content=True)
+async def unassign(ctx, left: str):
+        user = ctx.message.author
+        server = ctx.message.guild
+        role = discord.utils.get(server.roles, name=left)
+        if left  == "Nopartnerpings":
+          await ctx.send("You now don't have "+left+ str( user.name))
+          await user.remove_roles(role)
 
 client.run(TOKEN)
