@@ -96,7 +96,7 @@ async def unassign(ctx, left: str):
 async def on_member_join(member):
     channel = discord.utils.get(member.guild.channels, name="welcome")
     role = discord.utils.get(member.guild.roles, name="Nopartnerpings")
-    await client.send(channel, "Welcome "+str(member.mention))
+    await channel.send("Welcome "+str(member.mention))
     await member.add_roles(role)
 
 client.run(TOKEN)
