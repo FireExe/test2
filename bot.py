@@ -96,7 +96,13 @@ async def unassign(ctx, left: str):
 async def on_member_join(member):
     channel = discord.utils.get(member.guild.channels, name="welcome")
     role = discord.utils.get(member.guild.roles, name="Nopartnerpings")
-    await channel.send("Welcome "+str(member.mention))
+    await channel.send("Welcome to Elemental Soul "+str(member.mention)+"Make sure to read #rules, #faqs if you have any questions and #important-links for the group")
     await member.add_roles(role)
+    
+   
+@client.event
+async def on_member_remove(member):
+    channel = discord.utils.get(member.guild.channels, name="welcome")
+    await channel.send("Bye "+str(member.name)+" We hope to see you back at Elemental Soul soon!")
 
 client.run(TOKEN)
