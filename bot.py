@@ -95,7 +95,7 @@ async def unassign(ctx, left: str):
 @client.event
 async def on_member_join(member):
     channel = discord.utils.get(member.guild.channels, name="welcome")
-    role = discord.utils.get(member.guild.roles, name="Nopartnerpings")
+    role = discord.utils.get(member.guild.roles, name="QOTDping")
     await channel.send("Welcome to Elemental Soul "+str(member.mention)+"Make sure to read rules, faqs if you have any questions and important-links for the group")
     await member.add_roles(role)
     
