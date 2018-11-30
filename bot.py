@@ -90,5 +90,13 @@ async def unassign(ctx, left: str):
         if left  == "Nopartnerpings":
           await ctx.send("You will now recieve partner pings " + str( user.name))
           await user.remove_roles(role)
+         
+        
+@client.event
+async def on_member_join(member):
+    channel = get(member.guild.channels, name="welcome")
+    role = discord.utils.get(server.roles, name="Nopartnerpings")
+    await client.send(channel, "Welcome "+str(member.mention))
+    await member.add_roles(role)
 
 client.run(TOKEN)
