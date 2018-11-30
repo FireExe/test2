@@ -31,7 +31,7 @@ async def roasts(ctx):
      "You have the Rthro head shape",
      "Your lips are drier then the sahara",
      "Your knees are ashier then the skin of kfc chicken",
-     "What is {0.author.mention}, that name is so unoriginal",
+     "What is "+ctx.message.author.name+", that name is so unoriginal",
      "When i saw your head ,I realised a new 3d polygon had been discovered",
      "When someone tried to replicate your head in blender an error came up: triangle limit exceded ",
      "Dead trim, nuff said",
@@ -78,7 +78,7 @@ async def assign(ctx, left: str):
         server = ctx.message.guild
         role = discord.utils.get(server.roles, name=left)
         if left  == "Nopartnerpings":
-          await ctx.send("You now have "+left+ str( user.name))
+          await ctx.send("You will no longer receive partner pings " + str( user.name))
           await user.add_roles(role)
             
      
@@ -88,7 +88,7 @@ async def unassign(ctx, left: str):
         server = ctx.message.guild
         role = discord.utils.get(server.roles, name=left)
         if left  == "Nopartnerpings":
-          await ctx.send("You now don't have "+left+ str( user.name))
+          await ctx.send("You will now recieve partner pings " + str( user.name))
           await user.remove_roles(role)
 
 client.run(TOKEN)
