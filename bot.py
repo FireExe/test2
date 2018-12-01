@@ -80,6 +80,9 @@ async def assign(ctx, left: str):
         if left  == "Nopartnerpings":
           await ctx.send("You will no longer receive partner pings " + str( user.name))
           await user.add_roles(role)
+        elif left  == "QOTDping":
+          await ctx.send("You will no longer receive QOTD pings " + str( user.name))
+          await user.add_roles(role)
             
      
 @client.command(pass_content=True)
@@ -90,6 +93,9 @@ async def unassign(ctx, left: str):
         if left  == "Nopartnerpings":
           await ctx.send("You will now recieve partner pings " + str( user.name))
           await user.remove_roles(role)
+        elif left  == "QOTDping":
+          await ctx.send("You will now receive QOTD pings " + str( user.name))
+          await user.add_roles(role)
          
         
 @client.event
