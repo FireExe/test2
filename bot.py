@@ -125,12 +125,12 @@ async def help(ctx):
  embed.add_field(name="/roasts", value="Get roasted",inline=False)
  embed.add_field(name="/version", value="Checks my version",inline=False)
  embed.add_field(name="/assign", value="Give yourself a role",inline=False)
- embed.add_field(name="", value="Usage:/assign [Role]",inline=False)
- embed.add_field(name="", value="Example /assign QOTDping",inline=False)
+ embed.add_field(name="-", value="Usage:/assign [Role]",inline=False)
+ embed.add_field(name="-", value="Example /assign QOTDping",inline=False)
  embed.add_field(name="/unassign", value="Remove a role from yourself",inline=False)
- embed.add_field(name="", value="Usage:/unassign [Role]",inline=False)
- embed.add_field(name="", value="Example /unassign QOTDping",inline=False)
- await ctx.send("", embed=embed)
+ embed.add_field(name="-", value="Usage:/unassign [Role]",inline=False)
+ embed.add_field(name="-", value="Example /unassign QOTDping",inline=False)
+ await ctx.send("Here's all the commands and their uses:", embed=embed)
         
         
 @client.event
