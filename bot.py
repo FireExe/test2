@@ -105,6 +105,13 @@ async def kick(ctx, user: discord.Member):
          await user.kick()
         
         
+@client.command(pass_content=True)
+async def ban(ctx, user: discord.Member):
+        if ctx.message.author.guild_permissions.ban_members:
+         await ctx.send(str(user.name)+" has been banned")
+         await user.ban()
+        
+        
 @client.event
 async def on_member_join(member):
     channel = discord.utils.get(member.guild.channels, name="welcome")
