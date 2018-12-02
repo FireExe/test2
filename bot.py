@@ -96,7 +96,13 @@ async def unassign(ctx, left: str):
         elif left  == "QOTDping":
           await ctx.send("You will no longer receive QOTD pings " + str( user.name))
           await user.remove_roles(role)
-         
+      
+    
+@client.command(pass_content=True)
+async def kick(ctx, userName: discord.User):
+        if ctx.message.author.server_permissions.kick_members:
+         await ctx.send(str(userName.name)+" has been kicked")
+        
         
 @client.event
 async def on_member_join(member):
