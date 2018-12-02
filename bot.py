@@ -6,7 +6,7 @@ BOT_PREFIX = os.environ['prefix'] # -Prfix is need to declare a Command in disco
 TOKEN = os.environ['token'] # The token is also substituted for security reasons
 
 client = Bot(command_prefix=BOT_PREFIX)
-
+client.remove_command("help")
 # this is an event which is triggered when something happens in Discord 
 # in this case on_ready() is called when the bot logs on
 #you can checkthe Discord API Documentaion for more event Functions 
@@ -70,13 +70,6 @@ async def subtract(ctx, left: int, right: int):
 @client.command()
 async def square(ctx, num : int):
     await ctx.send(num*num)
-    embed = discord.Embed(
-        colour = discord.Colour.orange()
-    )
-    
-    embed.set_author(name="test")
-    embed.add_field(name="some test value", value="nothing boi",inline=False)
-    await ctx.send("hi", embed=embed)
     
     
 @client.command(pass_content=True)
@@ -120,6 +113,24 @@ async def ban(ctx, user: discord.Member):
         if ctx.message.author.guild_permissions.ban_members:
          await ctx.send(str(user.name)+" has been banned")
          await user.ban()
+        
+        
+@client.command(pass_content=True)
+async def help(ctx):
+ embed = discord.Embed(
+        colour = discord.Colour.orange()
+ )
+  
+ embed.set_author(name="Help")
+ embed.add_field(name="/roasts", value="Get roasted",inline=False)
+ embed.add_field(name="/version", value="Checks my version",inline=False)
+ embed.add_field(name="/assign", value="Give yourself a role",inline=False)
+ embed.add_field(name="", value="Usage:/assign [Role]",inline=False)
+ embed.add_field(name="", value="Example /assign QOTDping",inline=False)
+ embed.add_field(name="/unassign", value="Remove a role from yourself",inline=False)
+ embed.add_field(name="", value="Usage:/unassign [Role]",inline=False)
+ embed.add_field(name="", value="Example /unassign QOTDping",inline=False)
+ await ctx.send("", embed=embed)
         
         
 @client.event
