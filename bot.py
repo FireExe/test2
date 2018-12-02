@@ -99,10 +99,10 @@ async def unassign(ctx, left: str):
       
     
 @client.command(pass_content=True)
-async def kick(ctx, userName: discord.User):
+async def kick(ctx, user: discord.Member):
         if ctx.message.author.guild_permissions.kick_members:
-         await ctx.send(str(userName.name)+" has been kicked")
-         await ctx.message.guild.kick(UserName)
+         await ctx.send(str(user.name)+" has been kicked")
+         await user.kick()
         
         
 @client.event
