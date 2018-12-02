@@ -98,7 +98,10 @@ async def unassign(ctx, left: str):
           await user.remove_roles(role)
       
     
-@client.command(pass_content=True)
+@client.command(name="kick",
+                description="'Kick a member'    'Usage:/kick[member]'     'Example:/kick dJnokia'",
+                brief="'Usage:/kick[member]'",
+                pass_content=True)
 async def kick(ctx, user: discord.Member):
         if ctx.message.author.guild_permissions.kick_members:
          await ctx.send(str(user.name)+" has been kicked")
