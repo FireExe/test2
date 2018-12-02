@@ -70,6 +70,13 @@ async def subtract(ctx, left: int, right: int):
 @client.command()
 async def square(ctx, num : int):
     await ctx.send(num*num)
+    embed = discord.Embed(
+        colour = discord.Colour.orange()
+    )
+    
+    embed.set_author(name="test")
+    embed.add_field(name="some test value", value="nothing boi",inline=False)
+    await ctx.send("hi", embed=embed)
     
     
 @client.command(pass_content=True)
