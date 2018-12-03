@@ -128,7 +128,7 @@ async def help(ctx):
  embed.add_field(name="/assign", value="Give yourself a role",inline=False)
  embed.add_field(name="Usage:", value="/assign [Role]",inline=False)
  embed.add_field(name="Example:", value="/assign QOTDping",inline=True)
- embed.add_field(name="/unassign", value="Remove a role from yourself",inline=False)
+ embed.add_field(name="/unassign", value="Remove a role from yourself",inline=True)
  embed.add_field(name="Usage:", value="/unassign [Role]",inline=False)
  embed.add_field(name="Example:", value="/unassign QOTDping",inline=False)
  embed.add_field(name="/kick", value="Kick a user",inline=False)
