@@ -126,19 +126,29 @@ async def help(ctx):
  embed.add_field(name="/roasts", value="Get roasted",inline=False)
  embed.add_field(name="/version", value="Checks my version",inline=False)
  embed.add_field(name="/assign", value="Give yourself a role",inline=False)
- embed.add_field(name="Usage:", value="/assign [Role]",inline=False)
  embed.add_field(name="Example:", value="/assign QOTDping",inline=True)
  embed.add_field(name="/unassign", value="Remove a role from yourself",inline=True)
- embed.add_field(name="Usage:", value="/unassign [Role]",inline=False)
  embed.add_field(name="Example:", value="/unassign QOTDping",inline=False)
  embed.add_field(name="/kick", value="Kick a user",inline=False)
- embed.add_field(name="Usage:", value="/kick [user]",inline=False)
  embed.add_field(name="Example:", value="/kick dJnokia",inline=False)
  embed.add_field(name="/ban", value="Ban a user",inline=False)
- embed.add_field(name="Usage:", value="/ban [user]",inline=False)
  embed.add_field(name="Example:", value="/ban dJnokia",inline=False)
  await ctx.send("Here's all the commands and their uses:", embed=embed)
         
+    
+@client.command(pass_content=True)
+async def membercount(ctx):
+ embed = discord.Embed(
+        colour = discord.Colour.orange()
+ )
+ x = ctx.guild.members
+ num = 0
+ for member in x:
+    num = num + 1
+ embed.set_author(name="Member count:")
+ embed.add_field(name="Users: ", value=num,inline=False)
+ await ctx.send(" ", embed=embed)
+    
         
 @client.event
 async def on_member_join(member):
