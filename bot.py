@@ -146,7 +146,7 @@ async def membercount(ctx):
  num = 0
  for member in x:
     num = num + 1
- embed.set_author(name="Member count:")
+ embed.set_author(name=" ")
  embed.add_field(name="Users: ", value=num,inline=False)
  await ctx.send(" ", embed=embed)
     
