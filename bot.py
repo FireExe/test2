@@ -129,6 +129,7 @@ async def help(ctx):
  embed.add_field(name="Example:", value="/assign QOTDping",inline=True)
  embed.add_field(name="/unassign", value="Remove a role from yourself",inline=True)
  embed.add_field(name="Example:", value="/unassign QOTDping",inline=False)
+ embed.add_field(name="/membercount", value="Shows the amount of people in the server",inline=True)
  embed.add_field(name="/kick", value="Kick a user",inline=False)
  embed.add_field(name="Example:", value="/kick dJnokia",inline=False)
  embed.add_field(name="/ban", value="Ban a user",inline=False)
