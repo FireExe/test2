@@ -14,7 +14,7 @@ client.remove_command("help")
 
 @client.event
 async def on_ready():
-    activity = discord.Game(name="Elemental Soul| /help")
+    activity = discord.Game(name="Elemental Soul | /help")
     await client.change_presence(status=discord.Status.online, activity=activity)
     print('Logged in as')
     print(client.user.name)
@@ -133,9 +133,9 @@ async def help(ctx):
  embed.add_field(name="Example:", value="/unassign QOTDping",inline=False)
  embed.add_field(name="/membercount", value="Shows the amount of people in the server",inline=True)
  embed.add_field(name="/kick", value="Kick a user",inline=False)
- embed.add_field(name="Example:", value="/kick dJnokia",inline=False)
+ embed.add_field(name="Example:", value="/kick YourDad",inline=False)
  embed.add_field(name="/ban", value="Ban a user",inline=False)
- embed.add_field(name="Example:", value="/ban dJnokia",inline=False)
+ embed.add_field(name="Example:", value="/ban YourDad",inline=False)
  await ctx.send("Here's all the commands and their uses:", embed=embed)
         
     
