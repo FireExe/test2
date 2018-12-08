@@ -14,6 +14,7 @@ client.remove_command("help")
 
 @client.event
 async def on_ready():
+    await client.change_presence(game=discord.Game(name='with the elemental soul server'))
     print('Logged in as')
     print(client.user.name)
     print(client.user.id)
