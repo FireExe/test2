@@ -1,4 +1,4 @@
-import os, discord, random, datetime, time
+import os, discord, random, datetime, time, asyncio
 from discord.ext.commands import Bot
 
 # We'll need to substitute the Prefix for an Enviroment Variable
@@ -12,6 +12,13 @@ client.remove_command("help")
 #you can checkthe Discord API Documentaion for more event Functions 
 # here: https://discordapp.com/developers
 
+async def status_task():
+    while True:
+        now = datetime.datetime.now()
+        print(now.minute)
+        await asyncio.sleep(10)
+        
+
 @client.event
 async def on_ready():
     activity = discord.Game(name="Elemental Soul | /help")
@@ -20,6 +27,7 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print('------')
+    client.loop.create_task(status_task())
     
     
 # below this line you can put custom Functions
@@ -168,10 +176,7 @@ async def on_member_remove(member):
     
 
 client.run(TOKEN)
-while True:
-    now = datetime.datetime.now()
-    print(now.minute)
-    time.sleep(10)
+
 
 
     
