@@ -7,6 +7,7 @@ TOKEN = os.environ['token'] # The token is also substituted for security reasons
 
 client = Bot(command_prefix=BOT_PREFIX)
 client.remove_command("help")
+QOTD = "None"
 # this is an event which is triggered when something happens in Discord 
 # in this case on_ready() is called when the bot logs on
 #you can checkthe Discord API Documentaion for more event Functions 
@@ -15,9 +16,12 @@ client.remove_command("help")
 async def status_task():
     while True:
         now = datetime.datetime.now()
-        if now.hour == 10:
-         print(now.hour+now.minute)
-         await asyncio.sleep(10)
+        await asyncio.sleep(10)
+        if now.hour == 10 and now.minute == 30:
+        if QOTD != "None": 
+         channel = discord.utils.get(member.guild.channels, name="qotd")
+         await channel.send(QOTD)
+         QOTD = "None"
         
 
 @client.event
@@ -117,7 +121,12 @@ async def kick(ctx, user: discord.Member):
         if ctx.message.author.guild_permissions.kick_members:
          await ctx.send(str(user.name)+" has been kicked")
          await user.kick()
-        
+            
+ @client.command(pass_content=True)      
+ async def qotd(ctx, *, qotd):
+        if ctx.message.author.guild_permissions.ban_members:
+         await ctx.send(str(user.name)+" has set the qotd to "+qotd)
+         QOTD = qotd
         
 @client.command(pass_content=True)
 async def ban(ctx, user: discord.Member):
