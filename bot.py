@@ -16,8 +16,8 @@ async def status_task():
     while True:
         now = datetime.datetime.now()
         if now.hour == 10:
-        print(now.hour+now.minute)
-        await asyncio.sleep(10)
+         print(now.hour+now.minute)
+         await asyncio.sleep(10)
         
 
 @client.event
