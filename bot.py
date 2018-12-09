@@ -23,7 +23,8 @@ async def status_task():
           server = discord.utils.get(client.guilds, name='Elemental Soul')
           role = discord.utils.get(server.roles, name="QOTDping")
           channel = discord.utils.get(server.channels, name="qotd")
-          await channel.send(str(role.mention)+" "+QOTD)
+          channel2 = discord.utils.get(server.channels, name="self-assign-roles")
+          await channel.send(str(role.mention)+" "+QOTD+" Don't like pings? Go to "+str(channel2.mention))
           QOTD = "None"
         
 
@@ -84,8 +85,6 @@ async def multiply(ctx, left : int, right : int):
 @client.command()
 async def subtract(ctx, left: int, right: int):
         await ctx.send(left - right)
-        channel = discord.utils.get(ctx.guild.channels, name="welcome")
-        await ctx.send(str(channel.mention)+" "+"egg")
 
 
 @client.command()
@@ -183,7 +182,9 @@ async def membercount(ctx):
 async def on_member_join(member):
     channel = discord.utils.get(member.guild.channels, name="welcome")
     role = discord.utils.get(member.guild.roles, name="QOTDping")
-    await channel.send("Welcome to Elemental Soul "+str(member.mention)+" Make sure to read rules, faqs if you have any questions and important-links for the group")
+    channel2 = discord.utils.get(member.guild.channels, name="faqs")
+    channel3 = discord.utils.get(member.guild.channels, name="group")
+    await channel.send("Welcome to Elemental Soul "+str(member.mention)+" Make sure to read "+str(channel2.mention)+" if you have any questions and "+str(channel3.ention)+" for the group"
     await member.add_roles(role)
     
    
