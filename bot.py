@@ -168,8 +168,7 @@ async def on_member_remove(member):
     
 
 client.run(TOKEN)
-
-While True:
+while True:
     now = datetime.datetime.now()
     print(now.minute)
     time.sleep(60)
