@@ -1,4 +1,4 @@
-import os, discord, random
+import os, discord, random, datetime, time
 from discord.ext.commands import Bot
 
 # We'll need to substitute the Prefix for an Enviroment Variable
@@ -165,5 +165,13 @@ async def on_member_join(member):
 async def on_member_remove(member):
     channel = discord.utils.get(member.guild.channels, name="welcome")
     await channel.send("Bye "+str(member.name)+" We hope to see you back at Elemental Soul soon!")
+    
 
 client.run(TOKEN)
+
+
+while True:
+    now = datetime.datetime.now()
+    print(now.minute)
+    time.sleep(60)
+    
