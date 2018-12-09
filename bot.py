@@ -17,7 +17,8 @@ async def status_task():
     while True:
         now = datetime.datetime.now()
         await asyncio.sleep(10)
-        if now.hour == 3 and now.minute == 30:
+        print(now.hour)
+        if now.hour == 15 and now.minute == 30:
          global QOTD 
          if QOTD != "None":  
           server = discord.utils.get(client.guilds, name='Elemental Soul')
