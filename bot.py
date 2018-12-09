@@ -17,7 +17,6 @@ async def status_task():
     while True:
         now = datetime.datetime.now()
         await asyncio.sleep(10)
-        print(now.hour)
         if now.hour == 15 and now.minute == 30:
          global QOTD 
          if QOTD != "None":  
