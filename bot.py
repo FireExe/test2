@@ -68,10 +68,6 @@ async def roasts(ctx):
      "WOW! imagine if your parents weren't siblings",
      "Nooooob"
     ]
-    r = requests.get("https://www.rappad.co/insult-generator")
-    json_data = json.loads(r.text)
-    status_server = json_data['status']
-    await bot.say('Status is {}'.format(status_server))
     await ctx.send(random.choice(choices))
 
     
