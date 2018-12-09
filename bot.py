@@ -11,13 +11,14 @@ client.remove_command("help")
 # in this case on_ready() is called when the bot logs on
 #you can checkthe Discord API Documentaion for more event Functions 
 # here: https://discordapp.com/developers
-global QOTD = "None"
+QOTD = "None"
 
 async def status_task():
     while True:
         now = datetime.datetime.now()
         await asyncio.sleep(10)
-        if now.hour == 10 and now.minute == 47:
+        if now.hour == 10 and now.minute == 50:
+         global QOTD 
          if QOTD != "None": 
           server = client.guild
           channel = discord.utils.get(server.channels, name="qotd")
@@ -128,6 +129,7 @@ async def qotd(ctx, *, qotd):
         if ctx.message.author.guild_permissions.ban_members:
          user = ctx.message.author
          await ctx.send(str(user.name)+" has set the qotd to "+qotd)
+         global QOTD 
          QOTD = qotd
         
 @client.command(pass_content=True)
