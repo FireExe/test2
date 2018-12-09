@@ -20,21 +20,21 @@ async def status_task(ctx):
         if now.hour == 10 and now.minute == 59:
          global QOTD 
          if QOTD != "None": 
-          server = ctx.guild
+          server =  ctx.guild
           channel = discord.utils.get(server.channels, name="qotd")
           await channel.send(QOTD)
           QOTD = "None"
         
 
 @client.event
-async def on_ready(ctx):
+async def on_ready():
     activity = discord.Game(name="Elemental Soul | /help")
     await client.change_presence(status=discord.Status.online, activity=activity)
     print('Logged in as')
     print(client.user.name)
     print(client.user.id)
     print('------')
-    client.loop.create_task(status_task(ctx))
+    client.loop.create_task(status_task(client))
     
     
 # below this line you can put custom Functions
