@@ -7,11 +7,11 @@ TOKEN = os.environ['token'] # The token is also substituted for security reasons
 
 client = Bot(command_prefix=BOT_PREFIX)
 client.remove_command("help")
-QOTD = "None"
 # this is an event which is triggered when something happens in Discord 
 # in this case on_ready() is called when the bot logs on
 #you can checkthe Discord API Documentaion for more event Functions 
 # here: https://discordapp.com/developers
+QOTD = "None"
 
 async def status_task():
     while True:
