@@ -11,13 +11,13 @@ client.remove_command("help")
 # in this case on_ready() is called when the bot logs on
 #you can checkthe Discord API Documentaion for more event Functions 
 # here: https://discordapp.com/developers
-QOTD = "None"
+global QOTD = "None"
 
 async def status_task():
     while True:
         now = datetime.datetime.now()
         await asyncio.sleep(10)
-        if now.hour == 10 and now.minute == 40:
+        if now.hour == 10 and now.minute == 47:
          if QOTD != "None": 
           server = client.guild
           channel = discord.utils.get(server.channels, name="qotd")
