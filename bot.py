@@ -13,14 +13,14 @@ client.remove_command("help")
 # here: https://discordapp.com/developers
 QOTD = "None"
 
-async def status_task():
+async def status_task(ctx):
     while True:
         now = datetime.datetime.now()
         await asyncio.sleep(10)
-        if now.hour == 10 and now.minute == 50:
+        if now.hour == 10 and now.minute == 58:
          global QOTD 
          if QOTD != "None": 
-          server = client.guild
+          server = ctx.guild
           channel = discord.utils.get(server.channels, name="qotd")
           await channel.send(QOTD)
           QOTD = "None"
