@@ -85,7 +85,7 @@ async def multiply(ctx, left : int, right : int):
 async def subtract(ctx, left: int, right: int):
         await ctx.send(left - right)
         channel = discord.utils.get(ctx.guild.channels, name="welcome")
-        await ctx.send(str(channel.mention))
+        await ctx.send(str(channel.mention)+" "+"egg")
 
 
 @client.command()
