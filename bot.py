@@ -27,14 +27,14 @@ async def status_task(ctx):
         
 
 @client.event
-async def on_ready():
+async def on_ready(ctx):
     activity = discord.Game(name="Elemental Soul | /help")
     await client.change_presence(status=discord.Status.online, activity=activity)
     print('Logged in as')
     print(client.user.name)
     print(client.user.id)
     print('------')
-    client.loop.create_task(status_task())
+    client.loop.create_task(status_task(ctx))
     
     
 # below this line you can put custom Functions
