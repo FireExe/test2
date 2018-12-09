@@ -184,7 +184,7 @@ async def on_member_join(member):
     role = discord.utils.get(member.guild.roles, name="QOTDping")
     channel2 = discord.utils.get(member.guild.channels, name="faqs")
     channel3 = discord.utils.get(member.guild.channels, name="group")
-    await channel.send("Welcome to Elemental Soul "+str(member.mention)+" Make sure to read "+str(channel2.mention)+" if you have any questions and "+str(channel3.ention)+" for the group"
+    await channel.send("Welcome to Elemental Soul "+str(member.mention)+" Make sure to read "+str(channel2.mention)+" if you have any questions and "+str(channel3.mention)+" for the group")
     await member.add_roles(role)
     
    
