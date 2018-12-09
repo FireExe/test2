@@ -17,12 +17,12 @@ async def status_task():
     while True:
         now = datetime.datetime.now()
         await asyncio.sleep(10)
-        if now.hour == 11 and now.minute == 31:
+        if now.hour == 11 and now.minute == 33:
          global QOTD 
          if QOTD != "None": 
           server = discord.utils.get(client.guilds, name='Elemental Soul')
           channel = discord.utils.get(server.channels, name="qotd")
-          await channel.send("@>Fire.Exe"+QOTD)
+          await channel.send("@>Fire.Exe "+QOTD)
           QOTD = "None"
         
 
