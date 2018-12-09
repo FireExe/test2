@@ -17,10 +17,10 @@ async def status_task(ctx):
     while True:
         now = datetime.datetime.now()
         await asyncio.sleep(10)
-        if now.hour == 11 and now.minute == 8:
+        if now.hour == 11 and now.minute == 17:
          global QOTD 
          if QOTD != "None": 
-          server =  ctx.guild
+          server =  client.get_guild()
           channel = discord.utils.get(server.channels, name="qotd")
           await channel.send(QOTD)
           QOTD = "None"
