@@ -17,7 +17,7 @@ async def status_task():
     while True:
         now = datetime.datetime.now()
         await asyncio.sleep(10)
-        if now.hour == 10 and now.minute == 36:
+        if now.hour == 10 and now.minute == 40:
          if QOTD != "None": 
           server = client.guild
           channel = discord.utils.get(server.channels, name="qotd")
