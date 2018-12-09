@@ -17,7 +17,7 @@ async def status_task(ctx):
     while True:
         now = datetime.datetime.now()
         await asyncio.sleep(10)
-        if now.hour == 10 and now.minute == 58:
+        if now.hour == 10 and now.minute == 59:
          global QOTD 
          if QOTD != "None": 
           server = ctx.guild
