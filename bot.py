@@ -13,7 +13,7 @@ client.remove_command("help")
 # here: https://discordapp.com/developers
 QOTD = "None"
 
-async def status_task(ctx):
+async def status_task():
     while True:
         now = datetime.datetime.now()
         await asyncio.sleep(10)
@@ -34,7 +34,7 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print('------')
-    client.loop.create_task(status_task(client))
+    client.loop.create_task(status_task())
     
     
 # below this line you can put custom Functions
