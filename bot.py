@@ -17,7 +17,7 @@ async def status_task():
     while True:
         now = datetime.datetime.now()
         await asyncio.sleep(10)
-        if now.hour == 10 and now.minute == 32:
+        if now.hour == 10 and now.minute == 35:
          if QOTD != "None": 
           channel = discord.utils.get(member.guild.channels, name="qotd")
           await channel.send(QOTD)
@@ -122,8 +122,8 @@ async def kick(ctx, user: discord.Member):
          await ctx.send(str(user.name)+" has been kicked")
          await user.kick()
             
- @client.command(pass_content=True)      
- async def qotd(ctx, *, qotd):
+@client.command(pass_content=True)      
+async def qotd(ctx, *, qotd):
         if ctx.message.author.guild_permissions.ban_members:
          await ctx.send(str(user.name)+" has set the qotd to "+qotd)
          QOTD = qotd
