@@ -20,7 +20,7 @@ async def status_task():
         if now.hour == 11 and now.minute == 17:
          global QOTD 
          if QOTD != "None": 
-          server =  client.get_guild()
+          server = discord.utils.get(client.guilds, name='Elemental Soul')
           channel = discord.utils.get(server.channels, name="qotd")
           await channel.send(QOTD)
           QOTD = "None"
