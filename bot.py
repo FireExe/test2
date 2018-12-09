@@ -171,7 +171,7 @@ client.run(TOKEN)
 while True:
     now = datetime.datetime.now()
     print(now.minute)
-    time.sleep(60)
+    time.sleep(10)
 
 
     
