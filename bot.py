@@ -44,7 +44,7 @@ async def on_ready():
 async def roasts(ctx):
     choices = [
      "You have some egg head shape",
-     "The top of your head is a dome",
+     "You should eat some of that make up, to be pretty on the inside",
      "You need to fix that head shape of yours",
      "Your unseasoned",
      "You have the Rthro head shape",
@@ -54,16 +54,30 @@ async def roasts(ctx):
      "When i saw your head ,I realised a new 3d polygon had been discovered",
      "When someone tried to replicate your head in blender an error came up: triangle limit exceded ",
      "Dead trim, nuff said",
-     "I can see my self in that glistening forehead",
+     "I would insult you but nature did a better job.",
+     "Two wrongs don't make a right, take your parents as an example",
+     "I'm not trash talking, I'm talking to trash",
      "It's a waste of time trying to cuss something so irrelevant",
+     "I'm jealous of people that don't know you",
+     "A million years of evolution and we get you",
+     "I'd tell you to go outside, but you'd just ruin that for everyone else too",
+     "To which foundation do I need to donate to help you?",
+     "i thought i was ugly but evolution really took a step back with you",
+     "It must have been a sad day when you crawled from the abortion bucket",
+     "Maybe you should try something more on your level, like rock-paper-scissors",
+     "WOW! imagine if your parents weren't siblings",
      "Nooooob"
     ]
+    r = requests.get("https://www.rappad.co/insult-generator")
+    json_data = json.loads(r.text)
+    status_server = json_data['status']
+    await bot.say('Status is {}'.format(status_server))
     await ctx.send(random.choice(choices))
 
     
 @client.command()
 async def version(ctx):
-    await ctx.send("Elemental Soul Bot v.01 by >Fire.Exe")
+    await ctx.send("Elemental Soul Bot v.05 by >Fire.Exe")
 
 
 @client.command()
