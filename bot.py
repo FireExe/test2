@@ -73,6 +73,7 @@ async def add(ctx, left : int, right : int):
 @client.command()
 async def divide(ctx, left : int, right : int):
     await ctx.send(left / right)
+    
 
 
 @client.command()
@@ -83,6 +84,8 @@ async def multiply(ctx, left : int, right : int):
 @client.command()
 async def subtract(ctx, left: int, right: int):
         await ctx.send(left - right)
+        channel = discord.utils.get(ctx.guild.channels, name="welcome")
+        await ctx.send(str(channel.mention))
 
 
 @client.command()
