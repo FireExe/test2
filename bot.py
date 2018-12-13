@@ -79,11 +79,6 @@ async def version(ctx):
 @client.command()
 async def add(ctx, left : int, right : int):
     await ctx.send(left + right)
-    member = ctx.message.author
-    role = discord.utils.get(member.guild.roles, name="Nopartnerpings")
-    role.mentionable = True
-    await ctx.send(str(role.mention))
- 
 
 
 @client.command()
