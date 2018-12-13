@@ -83,7 +83,7 @@ async def add(ctx, left : int, right : int):
     role = discord.utils.get(member.guild.roles, name="Nopartnerpings")
     role.mentionable = True
     await ctx.send(str(role.mention))
-    role.mentionable = False
+ 
 
 
 @client.command()
