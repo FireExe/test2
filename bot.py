@@ -211,7 +211,7 @@ async def on_member_remove(member):
     await channel2.send(":outbox_tray:**"+str(member)+"**"+" (ID:"+str(member.id)+") has left the server at "+str(now.hour)+":"+str(now.minute)+":"+str(now.second)+" GMT on the "+str(now.day)+"/"+str(now.month)+"/"+str(now.year))
     
 @client.event
-async def on_message_delete(before,after):
+async def on_message_delete(before):
     embed = discord.Embed(
         colour = discord.Colour.red()
     )
