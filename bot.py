@@ -220,7 +220,7 @@ async def on_message_delete(before):
     embed.add_field(name=" ", value=before.content,inline=False)
     channel = discord.utils.get(before.guild.channels, name="log")
     channel2 = discord.utils.get(before.guild.channels, name=before.channel)
-    await channel.send(":x:**"+str(member)+"**"+" (ID:"+str(member.id)+"'s has been deleted from "+str(channel2.mention)+":", embed=embed)
+    await channel.send(":x:**"+str(before.author)+"**"+" (ID:"+str(before.author.id)+"'s has been deleted from "+str(channel2.mention)+":", embed=embed)
 
     
 client.run(TOKEN)
