@@ -165,12 +165,12 @@ async def help(ctx):
  embed.add_field(name="/version", value="Checks my version",inline=False)
  embed.add_field(name="/assign", value="Give yourself a role",inline=True)
  embed.add_field(name="Example:", value="/assign QOTDping",inline=True)
- embed.add_field(name="/unassign", value="Remove a role from yourself",inline=True)
+ embed.add_field(name="/unassign", value="Remove a role from yourself",inline=False)
  embed.add_field(name="Example:", value="/unassign QOTDping",inline=True)
  embed.add_field(name="/membercount", value="Shows the amount of people in the server",inline=False)
  embed.add_field(name="/kick", value="Kick a user",inline=True)
  embed.add_field(name="Example:", value="/kick YourDad",inline=True)
- embed.add_field(name="/ban", value="Ban a user",inline=True)
+ embed.add_field(name="/ban", value="Ban a user",inline=False)
  embed.add_field(name="Example:", value="/ban YourDad",inline=True)
  await ctx.send("Here's all the commands and their uses:", embed=embed)
         
@@ -226,6 +226,7 @@ async def on_message_delete(before):
     
 @client.event
 async def on_message_edit(before, after):
+   if before.author != client or before.author != Bot:
     now = datetime.datetime.now()
     embed = discord.Embed(
         colour = discord.Colour.green()
