@@ -195,7 +195,7 @@ async def on_member_join(member):
     role = discord.utils.get(member.guild.roles, name="QOTDping")
     channel2 = discord.utils.get(member.guild.channels, name="faqs")
     channel3 = discord.utils.get(member.guild.channels, name="group")
-    channel4 = discord.utils.get(member.guild.channels, name="logs")
+    channel4 = discord.utils.get(member.guild.channels, name="log")
     await channel.send("Welcome to Elemental Soul "+str(member.mention)+" Make sure to read "+str(channel2.mention)+" if you have any questions and "+str(channel3.mention)+" for the group")
     await channel4.send("**"+str(member)+"**  joined the server on "+now.day)
     await member.add_roles(role)
@@ -205,7 +205,7 @@ async def on_member_join(member):
 async def on_member_remove(member):
     now = datetime.datetime.now()
     channel = discord.utils.get(member.guild.channels, name="welcome")
-    channel2 = discord.utils.get(member.guild.channels, name="logs")
+    channel2 = discord.utils.get(member.guild.channels, name="log")
     await channel.send("Bye "+str(member.name)+" We hope to see you back at Elemental Soul soon!")
     await channel2.send("**"+str(member)+"**  has left the server on "+now.day)
     
