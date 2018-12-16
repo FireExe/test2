@@ -100,6 +100,7 @@ async def subtract(ctx, left: int, right: int):
 @client.command()
 async def square(ctx, num : int):
     await ctx.send(num*num)
+    await ctx.send(str(ctx.message.author))
     
     
 @client.command(pass_content=True)
