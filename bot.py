@@ -203,8 +203,11 @@ async def on_member_join(member):
    
 @client.event
 async def on_member_remove(member):
+    now = datetime.datetime.now()
     channel = discord.utils.get(member.guild.channels, name="welcome")
+    channel2 = discord.utils.get(member.guild.channels, name="logs")
     await channel.send("Bye "+str(member.name)+" We hope to see you back at Elemental Soul soon!")
+    await channel2.send("**"+str(member)+"**  has left the server on "+now.day)
     
 
 client.run(TOKEN)
