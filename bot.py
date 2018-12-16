@@ -224,21 +224,7 @@ async def on_message_delete(before):
     await channel.send(""+str(now.hour)+":"+str(now.minute)+":"+str(now.second)+" :x:**"+str(before.author)+"**"+" (ID:"+str(before.author.id)+"'s has been deleted from "+str(channel2.mention)+":", embed=embed)
 
     
-@client.event
-async def on_message_edit(before, after):
-   if before.author != client or before.author != Bot:
-    now = datetime.datetime.now()
-    embed = discord.Embed(
-        colour = discord.Colour.green()
-    )
-    server = before.guild
-    embed.set_author(name=" ")
-    embed.add_field(name="Edited message:", value="**From:**"+before.content,inline=False)
-    embed.add_field(name="Edited message:", value="**To:**"+after.content,inline=False)
-    channel = discord.utils.get(server.channels, name="log")
-    channel2 = discord.utils.get(server.channels, name=str(before.channel))
-    await channel.send(""+str(now.hour)+":"+str(now.minute)+":"+str(now.second)+" :hammer:**"+str(before.author)+"**"+" (ID:"+str(before.author.id)+"'s has been edited their message in "+str(channel2.mention)+":", embed=embed)
- 
+
     
 client.run(TOKEN)
 
