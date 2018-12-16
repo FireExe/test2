@@ -163,15 +163,15 @@ async def help(ctx):
  embed.add_field(name="/help", value="Shows this message",inline=False)
  embed.add_field(name="/roasts", value="Get roasted",inline=False)
  embed.add_field(name="/version", value="Checks my version",inline=False)
- embed.add_field(name="/assign", value="Give yourself a role",inline=False)
+ embed.add_field(name="/assign", value="Give yourself a role",inline=True)
  embed.add_field(name="Example:", value="/assign QOTDping",inline=True)
  embed.add_field(name="/unassign", value="Remove a role from yourself",inline=True)
- embed.add_field(name="Example:", value="/unassign QOTDping",inline=False)
- embed.add_field(name="/membercount", value="Shows the amount of people in the server",inline=True)
- embed.add_field(name="/kick", value="Kick a user",inline=False)
- embed.add_field(name="Example:", value="/kick YourDad",inline=False)
- embed.add_field(name="/ban", value="Ban a user",inline=False)
- embed.add_field(name="Example:", value="/ban YourDad",inline=False)
+ embed.add_field(name="Example:", value="/unassign QOTDping",inline=True)
+ embed.add_field(name="/membercount", value="Shows the amount of people in the server",inline=False)
+ embed.add_field(name="/kick", value="Kick a user",inline=True)
+ embed.add_field(name="Example:", value="/kick YourDad",inline=True)
+ embed.add_field(name="/ban", value="Ban a user",inline=True)
+ embed.add_field(name="Example:", value="/ban YourDad",inline=True)
  await ctx.send("Here's all the commands and their uses:", embed=embed)
         
     
@@ -220,8 +220,22 @@ async def on_message_delete(before):
     embed.add_field(name="Deleted Message:", value=before.content,inline=False)
     channel = discord.utils.get(server.channels, name="log")
     channel2 = discord.utils.get(server.channels, name=str(before.channel))
-    await channel.send(":x:**"+str(before.author)+"**"+" (ID:"+str(before.author.id)+"'s has been deleted from "+str(channel2.mention)+":", embed=embed)
+    await channel.send(""+str(now.hour)+":"+str(now.minute)+":"+str(now.second)" :x:**"+str(before.author)+"**"+" (ID:"+str(before.author.id)+"'s has been deleted from "+str(channel2.mention)+":", embed=embed)
 
+    
+@client.event
+async def on_message_edit(before, after):
+    embed = discord.Embed(
+        colour = discord.Colour.yellow()
+    )
+    server = before.guild
+    embed.set_author(name=" ")
+    embed.add_field(name="Edited message:", value="**From:**"+before.content,inline=False)
+    embed.add_field(name="Edited message:", value="**To:**"+after.content,inline=False)
+    channel = discord.utils.get(server.channels, name="log")
+    channel2 = discord.utils.get(server.channels, name=str(before.channel))
+    await channel.send(""+str(now.hour)+":"+str(now.minute)+":"+str(now.second)" :hammer:**"+str(before.author)+"**"+" (ID:"+str(before.author.id)+"'s has been edited their message in "+str(channel2.mention)+":", embed=embed)
+ 
     
 client.run(TOKEN)
 
