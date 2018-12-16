@@ -198,7 +198,7 @@ async def on_member_join(member):
     channel3 = discord.utils.get(member.guild.channels, name="group")
     channel4 = discord.utils.get(member.guild.channels, name="log")
     await channel.send("Welcome to Elemental Soul "+str(member.mention)+" Make sure to read "+str(channel2.mention)+" if you have any questions and "+str(channel3.mention)+" for the group")
-    await channel4.send(str(member.name)+"  joined the server on "+str(now.day))
+    await channel4.send(":inbox_tray:**"str(member)+"** has joined server at"str(now.hour)+":"+str(now.minute)+":"+str(now.second)+"GMT on the "+str(now.day)+"/"+str(now.month)+"/"+str(now.year))
     await member.add_roles(role)
     
    
@@ -208,7 +208,7 @@ async def on_member_remove(member):
     channel = discord.utils.get(member.guild.channels, name="welcome")
     channel2 = discord.utils.get(member.guild.channels, name="log")
     await channel.send("Bye "+str(member.name)+" We hope to see you back at Elemental Soul soon!")
-    await channel2.send(str(member.name)+"  has left the server on "+str(now.day))
+    await channel2.send(":outbox_tray:**"str(member)+"** has left the server at"str(now.hour)+":"+str(now.minute)+":"+str(now.second)+"GMT on the "+str(now.day)+"/"+str(now.month)+"/"+str(now.year))
     
 
 client.run(TOKEN)
