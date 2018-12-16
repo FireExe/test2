@@ -226,7 +226,7 @@ async def on_message_delete(before):
 @client.event
 async def on_message_edit(before, after):
     embed = discord.Embed(
-        colour = discord.Colour.yellow()
+        colour = discord.Colour.green()
     )
     server = before.guild
     embed.set_author(name=" ")
