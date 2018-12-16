@@ -212,6 +212,7 @@ async def on_member_remove(member):
     
 @client.event
 async def on_message_delete(before):
+    now = datetime.datetime.now()
     embed = discord.Embed(
         colour = discord.Colour.red()
     )
@@ -225,6 +226,7 @@ async def on_message_delete(before):
     
 @client.event
 async def on_message_edit(before, after):
+    now = datetime.datetime.now()
     embed = discord.Embed(
         colour = discord.Colour.green()
     )
