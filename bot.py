@@ -15,7 +15,7 @@ os.chdir = (r"C:\Users\Toshiba pc\PycharmProjects\bots")
 async def status_task():
  while True:
   now = datetime.datetime.now()
-  await asyncio.sleep(10)
+  await asyncio.sleep(1)
   server = discord.utils.get(client.guilds, name='Bot making')
   print("got to here")
   x = server.members
@@ -23,10 +23,15 @@ async def status_task():
    users = json.load(f)
    for member in x:
         await update_data(users, member, server)
-        users[str(member.id) + "-" + str(server.id)]["Lastrob"] = 1
-        with open("users.json", "w") as f:
+        if  int(users[str(user.id) + "-" + str(server.id)]["Lastrob"]) !=  int(1):
+         users[str(member.id) + "-" + str(server.id)]["Lastrob"] += 1
+         with open("users.json", "w") as f:
           json.dump(users, f)
-        print(str(member)+" has been reset")
+          if  int(users[str(user.id) + "-" + str(server.id)]["Lastrob"]) ==  int(60):
+           users[str(member.id) + "-" + str(server.id)]["Lastrob"] = 1
+           with open("users.json", "w") as f:
+            json.dump(users, f)
+            
        
        
 @client.event
@@ -72,7 +77,7 @@ async def rob(ctx):
          with open("users.json", "w") as f:
           json.dump(users, f)
         else:
-          await ctx.send("You have 1 minute until you can rob again")
+          await ctx.send("You have "+str(60-(users[str(member.id) + "-" + str(server.id)]["Lastrob"]))+" second until you can rob again")
     
 @client.command()
 async def bal(ctx):
