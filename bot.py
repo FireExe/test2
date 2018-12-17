@@ -17,7 +17,6 @@ async def status_task():
   now = datetime.datetime.now()
   await asyncio.sleep(1)
   server = discord.utils.get(client.guilds, name='Bot making')
-  print("got to here")
   x = server.members
   with open("users.json", "r") as f:
    users = json.load(f)
