@@ -20,8 +20,8 @@ async def status_task():
   print("got to here")
   x = server.members
   with open("users.json", "r") as f:
-  users = json.load(f)
-  for member in x:
+   users = json.load(f)
+   for member in x:
         await update_data(users, member, server)
         users[str(member.id) + "-" + str(server.id)]["Lastrob"] = 1
         print("ready")
