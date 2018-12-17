@@ -12,19 +12,33 @@ client.remove_command("help")
 #you can checkthe Discord API Documentaion for more event Functions 
 # here: https://discordapp.com/developers
 os.chdir = (r"C:\Users\Toshiba pc\PycharmProjects\bots")
+async def status_task():
+ while True:
+  now = datetime.datetime.now()
+  await asyncio.sleep(60)
+  server = discord.utils.get(client.guilds, name='Bot making')
+  x = server.members
+  for member in x:
+   with open("users.json", "r") as f:
+        users = json.load(f)
+        user = member
+        await update_data(users, user, server)
+        users[str(user.id) + "-" + str(server.id)]["Lastrob"] = 1
+
+
 
 async def update_data(users, user, server):
     if not str(user.id) + "-" + str(server.id) in users:
         users[str(user.id) + "-" + str(server.id)] = {}
         users[str(user.id) + "-" + str(server.id)]["money"] = 100
         users[str(user.id) + "-" + str(server.id)]["strikes"] = 0
-        users[str(user.id) + "-" + str(server.id)]["Lastrob"] = 0
+        users[str(user.id) + "-" + str(server.id)]["Lastrob"] = 1
 
 
 async def add_experience(users, user, exp, server):
         now = datetime.datetime.now()
         users[str(user.id) + "-" + str(server.id)]["money"] += exp
-        users[str(user.id) + "-" + str(server.id)]["Lastrob"] = now.minute
+        users[str(user.id) + "-" + str(server.id)]["Lastrob"] = 2
 
 
 @client.command()
@@ -34,7 +48,7 @@ async def rob(ctx):
         users = json.load(f)
         user = ctx.message.author
         server = ctx.message.guild
-        if  int(users[str(user.id) + "-" + str(server.id)]["Lastrob"]) != now.minute:
+        if  int(users[str(user.id) + "-" + str(server.id)]["Lastrob"]) ==  int(1):
          number = random.randint(20, 100)
          await ctx.send("You rob a bank and earn £"+str(number))
          await update_data(users, ctx.message.author, ctx.message.guild)
