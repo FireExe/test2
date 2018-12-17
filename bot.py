@@ -221,9 +221,23 @@ async def on_message_delete(before):
     embed.add_field(name="Deleted Message:", value=before.content,inline=False)
     channel = discord.utils.get(server.channels, name="log")
     channel2 = discord.utils.get(server.channels, name=str(before.channel))
-    await channel.send(""+str(now.hour)+":"+str(now.minute)+":"+str(now.second)+" :x:**"+str(before.author)+"**"+" (ID:"+str(before.author.id)+"'s has been deleted from "+str(channel2.mention)+":", embed=embed)
+    await channel.send(""+str(now.hour)+":"+str(now.minute)+":"+str(now.second)+" :x:**"+str(before.author)+"**"+" (ID:"+str(before.author.id)+")'s has been deleted from "+str(channel2.mention)+":", embed=embed)
 
     
+@client.event
+async def on_message_edit(before,after):
+    now = datetime.datetime.now()
+    embed = discord.Embed(
+        colour = discord.Colour.green()
+    )
+    server = after.guild
+    embed.set_author(name=" ")
+    embed.add_field(name="**From:**",value=before.content,inline=False)
+    embed.add_field (name="**To:**",value=after.content,inline=False)
+    channel = discord.utils.get(server.channels, name="log")
+    channel2 = discord.utils.get(server.channels, name=str(before.channel))
+    await channel.send(""+str(now.hour)+":"+str(now.minute)+":"+str(now.second)+" :hammer:**"+str(after.author)+"**"+" (ID:"+str(before.author.id)+")'s message has been edited in "+str(channel2.mention)+":", embed=embed)
+
 
     
 client.run(TOKEN)
