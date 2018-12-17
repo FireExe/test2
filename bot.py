@@ -19,7 +19,7 @@ async def rob(ctx):
     with open("users.json", "r") as f:
          users = json.load(f)
          number = random.randint(20, 100)
-         await ctx.send("You rob a bank and earn"+str(number))
+         await ctx.send("You rob a bank and earn £"+str(number))
          await update_data(users, ctx.message.author, ctx.message.guild)
          await add_experience(users, ctx.message.author, number, ctx.message.guild)
          with open("users.json", "w") as f:
@@ -29,13 +29,13 @@ async def rob(ctx):
 
 async def update_data(users, user, server):
     if not user.id + "-" + server.id in users:
-        users[user.id + "-" + server.id] = {}
-        users[user.id + "-" + server.id]["money"] = 100
-        users[user.id + "-" + server.id]["strikes"] = 0
+        users[str(user.id) + "-" + str(server.id)] = {}
+        users[str(user.id) + "-" + str(server.id)]["money"] = int(100)
+        users[str(user.id) + "-" + str(server.id)]["strikes"] = int(0)
 
 
 async def add_experience(users, user, exp, server):
-        users[user.id + "-" + server.id]["money"] += exp
+        users[str(user.id) + "-" + str(server.id)]["money"] += exp
 
 
 
