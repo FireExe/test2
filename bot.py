@@ -13,6 +13,16 @@ client.remove_command("help")
 # here: https://discordapp.com/developers
 os.chdir = (r"C:\Users\Toshiba pc\PycharmProjects\bots")
 
+async def update_data(users, user, server):
+    if not str(user.id) + "-" + str(server.id) in users:
+        users[str(user.id) + "-" + str(server.id)] = {}
+        users[str(user.id) + "-" + str(server.id)]["money"] = int(100)
+        users[str(user.id) + "-" + str(server.id)]["strikes"] = int(0)
+
+
+async def add_experience(users, user, exp, server):
+        users[str(user.id) + "-" + str(server.id)]["money"] += exp
+
 
 @client.command()
 async def rob(ctx):
@@ -32,18 +42,10 @@ async def bal(ctx):
     users = json.load(f)
     user = ctx.message.author
     server = ctx.message.guild
+    await update_data(users, ctx.message.author, ctx.message.guild)
     ctx.send(str(users[str(user.id) + "-" + str(server.id)]["money"]))
 
 
-async def update_data(users, user, server):
-    if not str(user.id) + "-" + str(server.id) in users:
-        users[str(user.id) + "-" + str(server.id)] = {}
-        users[str(user.id) + "-" + str(server.id)]["money"] = int(100)
-        users[str(user.id) + "-" + str(server.id)]["strikes"] = int(0)
-
-
-async def add_experience(users, user, exp, server):
-        users[str(user.id) + "-" + str(server.id)]["money"] += exp
 
 
 
