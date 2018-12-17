@@ -73,7 +73,7 @@ async def rob(ctx):
          colour = discord.Colour.green()
          )
          embed.set_author(name=" ")
-         embed.add_field(name="You rob a bank and earn £"+str(number), value=" ",inline=False)
+         embed.add_field(name="Success Robbery", value="You rob a bank and earn £"+str(number),inline=False)
          await ctx.send(" ",embed=embed)
          await update_data(users, ctx.message.author, ctx.message.guild)
          await add_experience(users, ctx.message.author, int(number), ctx.message.guild)
