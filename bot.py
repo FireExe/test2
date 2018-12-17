@@ -28,6 +28,8 @@ async def rob(ctx):
     
 @client.command()
 async def bal(ctx):
+   with open("users.json", "r") as f:
+    users = json.load(f)
     ctx.send(str(users[str(user.id) + "-" + str(server.id)]["money"]))
 
 
