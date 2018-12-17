@@ -28,7 +28,7 @@ async def rob(ctx):
 
 
 async def update_data(users, user, server):
-    if not user.id + "-" + server.id in users:
+    if not str(user.id) + "-" + str(server.id) in users:
         users[str(user.id) + "-" + str(server.id)] = {}
         users[str(user.id) + "-" + str(server.id)]["money"] = int(100)
         users[str(user.id) + "-" + str(server.id)]["strikes"] = int(0)
