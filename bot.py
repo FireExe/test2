@@ -43,7 +43,7 @@ async def bal(ctx):
     user = ctx.message.author
     server = ctx.message.guild
     await update_data(users, ctx.message.author, ctx.message.guild)
-    ctx.send(str(users[str(user.id) + "-" + str(server.id)]["money"]))
+    await ctx.send(str(users[str(user.id) + "-" + str(server.id)]["money"]))
 
 
 
