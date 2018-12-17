@@ -34,7 +34,6 @@ async def rob(ctx):
          await add_experience(users, ctx.message.author, int(number), ctx.message.guild)
          with open("users.json", "w") as f:
           json.dump(users, f)
-    await client.process_commands(ctx.message)
     
 @client.command()
 async def bal(ctx):
