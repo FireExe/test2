@@ -24,7 +24,9 @@ async def status_task():
    for member in x:
         await update_data(users, member, server)
         users[str(member.id) + "-" + str(server.id)]["Lastrob"] = 1
-        print("ready")
+        with open("users.json", "w") as f:
+          json.dump(users, f)
+        print(str(member)+" has been reset")
        
        
 @client.event
