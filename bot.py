@@ -15,15 +15,15 @@ os.chdir = (r"C:\Users\Toshiba pc\PycharmProjects\bots")
 async def status_task():
  while True:
   now = datetime.datetime.now()
-  await asyncio.sleep(60)
+  await asyncio.sleep(10)
   server = discord.utils.get(client.guilds, name='Bot making')
   x = server.members
   for member in x:
    with open("users.json", "r") as f:
         users = json.load(f)
-        user = member
-        await update_data(users, user, server)
-        users[str(user.id) + "-" + str(server.id)]["Lastrob"] = 1
+        await update_data(users, member, server)
+        users[str(member.id) + "-" + str(server.id)]["Lastrob"] = 1
+        print("ready")
 
 
 
