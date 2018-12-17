@@ -98,11 +98,6 @@ async def multiply(ctx, left : int, right : int):
 @client.command()
 async def subtract(ctx, left: int, right: int):
         await ctx.send(left - right)
-        data["id"].append({
-            "id":str(ctx.message.author.id)
-        })
-        with open("data.txt", "w") as outfile:
-            json.dump(data, outfile)
 
 
 @client.command()
