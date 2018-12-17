@@ -30,6 +30,8 @@ async def rob(ctx):
 async def bal(ctx):
    with open("users.json", "r") as f:
     users = json.load(f)
+    user = ctx.message.author
+    server = ctx.message.guild
     ctx.send(str(users[str(user.id) + "-" + str(server.id)]["money"]))
 
 
