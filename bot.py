@@ -1,4 +1,4 @@
-import os, discord, random, datetime, time, asyncio
+import os, discord, random, datetime, time, asyncio, json
 from discord.ext.commands import Bot
 
 # We'll need to substitute the Prefix for an Enviroment Variable
@@ -12,6 +12,9 @@ client.remove_command("help")
 #you can checkthe Discord API Documentaion for more event Functions 
 # here: https://discordapp.com/developers
 QOTD = "None"
+data = {}
+data["User"]=[]
+    
 
 async def status_task():
     while True:
@@ -95,6 +98,12 @@ async def multiply(ctx, left : int, right : int):
 @client.command()
 async def subtract(ctx, left: int, right: int):
         await ctx.send(left - right)
+        data["id"].append({
+            "id":str(ctx.message.author.id)
+            "level" = 10
+        })
+        with open("data.txt", "w") as outfile:
+            json.dump(data, outfile)
 
 
 @client.command()
