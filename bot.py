@@ -33,6 +33,7 @@ async def rob(ctx):
     with open("users.json", "r") as f:
         users = json.load(f)
         user = ctx.message.author
+        server = ctx.message.guild
         if  users[str(user.id) + "-" + str(server.id)]["Lastrob"] != now.minute:
          number = random.randint(20, 100)
          await ctx.send("You rob a bank and earn £"+str(number))
