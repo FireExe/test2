@@ -25,6 +25,18 @@ async def status_task():
         await update_data(users, member, server)
         users[str(member.id) + "-" + str(server.id)]["Lastrob"] = 1
         print("ready")
+       
+       
+@client.event
+async def on_ready():
+    activity = discord.Game(name="B-tech ES Bot")
+    await client.change_presence(status=discord.Status.online, activity=activity)
+    print('Logged in as')
+    print(client.user.name)
+    print(client.user.id)
+    print('------')
+    client.loop.create_task(status_task())
+    
 
 
 
