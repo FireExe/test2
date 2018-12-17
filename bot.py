@@ -20,8 +20,8 @@ async def rob(ctx):
          users = json.load(f)
          number = random.randint(20, 100)
          await ctx.send("You rob a bank and earn"+str(number))
-         await update_data(users, ctx.message.author, ctx.message.server)
-         await add_experience(users, ctx.message.author, number, ctx.message.server)
+         await update_data(users, ctx.message.author, ctx.message.guild)
+         await add_experience(users, ctx.message.author, number, ctx.message.guild)
          with open("users.json", "w") as f:
           json.dump(users, f)
     await client.process_commands(ctx.message)
