@@ -24,18 +24,23 @@ async def update_data(users, user, server):
 async def add_experience(users, user, exp, server):
         now = datetime.datetime.now()
         users[str(user.id) + "-" + str(server.id)]["money"] += exp
+        users[str(user.id) + "-" + str(server.id)]["Lastrob"] = now.minute
 
 
 @client.command()
 async def rob(ctx):
+    now = datetime.datetime.now()
     with open("users.json", "r") as f:
-         users = json.load(f)
+        users = json.load(f)
+        if  users[str(user.id) + "-" + str(server.id)]["Lastrob"] != now.minute:
          number = random.randint(20, 100)
          await ctx.send("You rob a bank and earn £"+str(number))
          await update_data(users, ctx.message.author, ctx.message.guild)
          await add_experience(users, ctx.message.author, int(number), ctx.message.guild)
          with open("users.json", "w") as f:
           json.dump(users, f)
+        else:
+          await ctx.send("You have 1 minute until you can rob again")
     
 @client.command()
 async def bal(ctx):
