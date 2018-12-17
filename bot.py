@@ -16,11 +16,13 @@ os.chdir = (r"C:\Users\Toshiba pc\PycharmProjects\bots")
 async def update_data(users, user, server):
     if not str(user.id) + "-" + str(server.id) in users:
         users[str(user.id) + "-" + str(server.id)] = {}
-        users[str(user.id) + "-" + str(server.id)]["money"] = int(100)
-        users[str(user.id) + "-" + str(server.id)]["strikes"] = int(0)
+        users[str(user.id) + "-" + str(server.id)]["money"] = 100
+        users[str(user.id) + "-" + str(server.id)]["strikes"] = 0
+        users[str(user.id) + "-" + str(server.id)]["Lastrob"] = 0
 
 
 async def add_experience(users, user, exp, server):
+        now = datetime.datetime.now()
         users[str(user.id) + "-" + str(server.id)]["money"] += exp
 
 
