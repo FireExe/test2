@@ -69,7 +69,12 @@ async def rob(ctx):
         await update_data(users, ctx.message.author, ctx.message.guild)
         if  int(users[str(user.id) + "-" + str(server.id)]["Lastrob"]) ==  int(1):
          number = random.randint(20, 100)
-         await ctx.send("You rob a bank and earn £"+str(number))
+         embed = discord.Embed(
+         colour = discord.Colour.green()
+         )
+         embed.set_author(name=" ")
+         embed.add_field(name="You rob a bank and earn £"+str(number), value=" ",inline=False)
+         await ctx.send(" ",embed=embed)
          await update_data(users, ctx.message.author, ctx.message.guild)
          await add_experience(users, ctx.message.author, int(number), ctx.message.guild)
          with open("users.json", "w") as f:
