@@ -27,7 +27,7 @@ async def status_task():
          with open("users.json", "w") as f:
           json.dump(users, f)
           print("past here")
-        elif int(users[str(member.id) + "-" + str(server.id)]["Lastrob"]) ==  int(60)
+        elif str(users[str(member.id) + "-" + str(server.id)]["Lastrob"]) ==  int(60)
            print("over 60")
            users[str(member.id) + "-" + str(server.id)]["Lastrob"] = 1
            with open("users.json", "w") as f:
