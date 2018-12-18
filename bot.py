@@ -98,7 +98,7 @@ async def bal(ctx):
 async def on_message(message):
     with open("users.json", "r") as f:
         users = json.load(f)
-        if message.author.client:
+        if message.author == client:
             return
         else:
             await update_data(users, message.author)
