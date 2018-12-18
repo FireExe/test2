@@ -107,6 +107,7 @@ async def on_message(message):
             await level_up(users, message.author, message.channel, message.guild)
             with open("users.json", "w") as f:
              json.dump(users, f)
+    await client.process_commands(message)
              
             
 async def add_experience(users, user, exp, server):
