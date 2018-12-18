@@ -26,9 +26,7 @@ async def status_task():
          users[str(member.id) + "-" + str(server.id)]["Lastrob"] += 1
          with open("users.json", "w") as f:
           json.dump(users, f)
-          print("past here")
         elif int(users[str(member.id) + "-" + str(server.id)]["Lastrob"]) ==  int(60):
-           print("over 60")
            users[str(member.id) + "-" + str(server.id)]["Lastrob"] = 1
            with open("users.json", "w") as f:
             json.dump(users, f)
@@ -98,7 +96,7 @@ async def bal(ctx):
 async def on_message(message):
     with open("users.json", "r") as f:
         users = json.load(f)
-        if message.author == client:
+        if message.author.id == client.id:
             return
         else:
             await update_data(users, message.author,message.guild)
