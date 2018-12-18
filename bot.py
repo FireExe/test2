@@ -51,9 +51,11 @@ async def update_data(users, user, server):
         users[str(user.id) + "-" + str(server.id)]["money"] = 100
         users[str(user.id) + "-" + str(server.id)]["strikes"] = 0
         users[str(user.id) + "-" + str(server.id)]["Lastrob"] = 1
+        users[str(user.id) + "-" + str(server.id)]["experience"] = 0
+        users[str(user.id) + "-" + str(server.id)]["level"] = 1
 
 
-async def add_experience(users, user, exp, server):
+async def add_money(users, user, exp, server):
         now = datetime.datetime.now()
         users[str(user.id) + "-" + str(server.id)]["money"] += exp
         users[str(user.id) + "-" + str(server.id)]["Lastrob"] = 2
@@ -76,7 +78,7 @@ async def rob(ctx):
          embed.add_field(name="Successful Robbery", value="You rob a bank and earn £"+str(number),inline=False)
          await ctx.send(" ",embed=embed)
          await update_data(users, ctx.message.author, ctx.message.guild)
-         await add_experience(users, ctx.message.author, int(number), ctx.message.guild)
+         await add_money(users, ctx.message.author, int(number), ctx.message.guild)
          with open("users.json", "w") as f:
           json.dump(users, f)
         else:
@@ -90,6 +92,34 @@ async def bal(ctx):
     server = ctx.message.guild
     await update_data(users, ctx.message.author, ctx.message.guild)
     await ctx.send(str(users[str(user.id) + "-" + str(server.id)]["money"]))
+  
+
+@client.event
+async def on_message(message):
+    with open("users.json", "r") as f:
+        users = json.load(f)
+        if message.author.client:
+            return
+        else:
+            await update_data(users, message.author)
+            number = random.randint(5,10)
+            await add_experience(users, message.author, number)
+            await level_up(users, message.author, message.channel)
+            with open("users.json", "w") as f:
+             json.dump(users, f)
+             
+            
+async def add_experience(users, user, exp):
+    users[str(user.id) + "-" + str(server.id)]["experience"] += exp
+
+async def level_up(users, user, channel):
+    experience = users[str(user.id) + "-" + str(server.id)]["experience"]
+    lvl_start = users[str(user.id) + "-" + str(server.id)]["level"]
+    lvl_end = int(experience ** (1/4))
+
+    if lvl_start < lvl_end:
+        await channel.send(f":tada: Congrats {user.mention}, you levelled up to level {lvl_end}!")
+        users[str(user.id) + "-" + str(server.id)]["level"] = lvl_end
 
 
 
