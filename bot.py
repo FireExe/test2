@@ -103,16 +103,16 @@ async def on_message(message):
         else:
             await update_data(users, message.author,message.guild)
             number = random.randint(5,10)
-            await add_experience(users, message.author, number)
-            await level_up(users, message.author, message.channel)
+            await add_experience(users, message.author, number, message.guild)
+            await level_up(users, message.author, message.channel, message.guild)
             with open("users.json", "w") as f:
              json.dump(users, f)
              
             
-async def add_experience(users, user, exp):
+async def add_experience(users, user, exp, server):
     users[str(user.id) + "-" + str(server.id)]["experience"] += exp
 
-async def level_up(users, user, channel):
+async def level_up(users, user, channel, server):
     experience = users[str(user.id) + "-" + str(server.id)]["experience"]
     lvl_start = users[str(user.id) + "-" + str(server.id)]["level"]
     lvl_end = int(experience ** (1/4))
