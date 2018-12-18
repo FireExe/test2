@@ -101,7 +101,7 @@ async def on_message(message):
         if message.author == client:
             return
         else:
-            await update_data(users, message.author)
+            await update_data(users, message.author,message.guild)
             number = random.randint(5,10)
             await add_experience(users, message.author, number)
             await level_up(users, message.author, message.channel)
