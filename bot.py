@@ -84,7 +84,7 @@ async def rob(ctx):
     
 @client.command()
 async def bal(ctx):
-   with open("users.json", "r") as f:
+   with open("C:\\Users\\Toshiba pc\\Desktop\\users.json", "r") as f:
     users = json.load(f)
     user = ctx.message.author
     server = ctx.message.guild
@@ -94,7 +94,7 @@ async def bal(ctx):
 
 @client.event
 async def on_message(message):
-    with open("users.json", "r") as f:
+    with open("C:\\Users\\Toshiba pc\\Desktop\\users.json", "r") as f:
         users = json.load(f)
         if message.author.id == client.user.id:
             return
@@ -103,7 +103,7 @@ async def on_message(message):
             number = random.randint(5,10)
             await add_experience(users, message.author, number, message.guild)
             await level_up(users, message.author, message.channel, message.guild)
-            with open("users.json", "w") as f:
+            with open("C:\\Users\\Toshiba pc\\Desktop\\users.json", "w") as f:
              json.dump(users, f)
     await client.process_commands(message)
              
