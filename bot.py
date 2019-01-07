@@ -62,7 +62,7 @@ async def add_money(users, user, exp, server):
 @client.command()
 async def rob(ctx):
     now = datetime.datetime.now()
-    with open("C:\Users\Toshiba pc\Desktop\users.json", "r") as f:
+    with open("C:\\Users\\Toshiba pc\\Desktop\\users.json", "r") as f:
         users = json.load(f)
         user = ctx.message.author
         server = ctx.message.guild
