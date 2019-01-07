@@ -64,8 +64,9 @@ async def add_money(users, user, exp, server):
 @client.command()
 async def test(ctx):        
     newFile = open("C:\\Users\\Toshiba pc\\Desktop\\users", 'w+')
-    newFile.write(ctx.message.author.name)
+    newFile.write("yeet")
     newFile.close()
+    print("done")
           
 @client.command()
 async def bal(ctx):
