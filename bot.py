@@ -38,7 +38,7 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print('------')
-    client.loop.create_task(status_task())
+    #client.loop.create_task(status_task())
     
 
 
@@ -59,29 +59,14 @@ async def add_money(users, user, exp, server):
         users[str(user.id) + "-" + str(server.id)]["Lastrob"] = 2
 
 
+
+
 @client.command()
-async def rob(ctx):
-    now = datetime.datetime.now()
-    with open("C:\\Users\\Toshiba pc\\Desktop\\users.json", "r") as f:
-        users = json.load(f)
-        user = ctx.message.author
-        server = ctx.message.guild
-        await update_data(users, ctx.message.author, ctx.message.guild)
-        if  int(users[str(user.id) + "-" + str(server.id)]["Lastrob"]) ==  int(1):
-         number = random.randint(20, 100)
-         embed = discord.Embed(
-         colour = discord.Colour.green()
-         )
-         embed.set_author(name=" ")
-         embed.add_field(name="Successful Robbery", value="You rob a bank and earn £"+str(number),inline=False)
-         await ctx.send(" ",embed=embed)
-         await update_data(users, ctx.message.author, ctx.message.guild)
-         await add_money(users, ctx.message.author, int(number), ctx.message.guild)
-         with open("users.json", "w") as f:
-          json.dump(users, f)
-        else:
-          await ctx.send("You have "+str(60-(users[str(user.id) + "-" + str(server.id)]["Lastrob"]))+" second until you can rob again")
-    
+async def test(ctx):        
+    newFile = open("C:\\Users\\Toshiba pc\\Desktop\\users", 'w+')
+    newFile.write(ctx.message.author.name)
+    newFile.close()
+          
 @client.command()
 async def bal(ctx):
    with open("C:\\Users\\Toshiba pc\\Desktop\\users.json", "r") as f:
