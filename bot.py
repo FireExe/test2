@@ -63,10 +63,10 @@ async def add_money(users, user, exp, server):
 
 @client.command()
 async def test(ctx):        
-    with open("/path/to/file","mode-goes-here") as file:
-    newFile.write("yeet")
-    newFile.close()
-    print("done")
+    with open("C:\\Users\\chzba333@gmail.com\\Desktop\\text.txt","w") as file:
+     newFile.write("yeet")
+     newFile.close()
+     print("done")
           
 @client.command()
 async def bal(ctx):
