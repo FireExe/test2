@@ -63,7 +63,7 @@ async def add_money(users, user, exp, server):
 
 @client.command()
 async def test(ctx):        
-    newFile = open("C:\\Users\\Toshiba pc\\Desktop\\users", 'w+')
+    with open("/path/to/file","mode-goes-here") as file:
     newFile.write("yeet")
     newFile.close()
     print("done")
