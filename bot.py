@@ -62,7 +62,7 @@ async def add_money(users, user, exp, server):
 
 
 @client.command()
-async def beanhead(ctx):        
+async def test(ctx):        
     with open("C:\\Users\\chzba333@gmail.com\\Desktop\\text.txt","w") as file:
      newFile.write("yeet")
      newFile.close()
@@ -70,17 +70,19 @@ async def beanhead(ctx):
           
 @client.command()
 async def bal(ctx):
-   with open("C:\\Users\\Toshiba pc\\Desktop\\users.json", "r") as f:
+   with open("C:\\Users\\chzba333@gmail.com\\Desktop\\text.txt", "r") as f:
     users = json.load(f)
     user = ctx.message.author
     server = ctx.message.guild
     await update_data(users, ctx.message.author, ctx.message.guild)
     await ctx.send(str(users[str(user.id) + "-" + str(server.id)]["money"]))
+    for line in f:
+     print(line)
   
 
 @client.event
 async def on_message(message):
-    with open("C:\\Users\\Toshiba pc\\Desktop\\users.json", "r") as f:
+    with open("C:\\Users\\chzba333@gmail.com\\Desktop\\text.txt", "r") as f:
         users = json.load(f)
         if message.author.id == client.user.id:
             return
