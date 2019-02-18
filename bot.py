@@ -91,7 +91,7 @@ async def on_message(message):
             number = random.randint(5,10)
             await add_experience(users, message.author, number, message.guild)
             await level_up(users, message.author, message.channel, message.guild)
-            with open("C:\\Users\\Toshiba pc\\Desktop\\users.json", "w") as f:
+            with open("users.json", "r+") as f:
              json.dump(users, f)
     await client.process_commands(message)
              
