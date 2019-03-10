@@ -60,21 +60,6 @@ async def bal(ctx):
      print(line)
   
 
-@client.event
-async def on_message(message):
-    with open("users.json", "r+") as f:
-        users = json.load(f)
-        if message.author.id == client.user.id:
-            return
-        else:
-            await update_data(users, message.author,message.guild)
-            number = random.randint(5,10)
-            await add_experience(users, message.author, number, message.guild)
-            await level_up(users, message.author, message.channel, message.guild)
-            with open("users.json", "r+") as f:
-             json.dump(users, f)
-    await client.process_commands(message)
-             
             
 async def add_experience(users, user, exp, server):
     users[str(user.id) + "-" + str(server.id)]["experience"] += exp
