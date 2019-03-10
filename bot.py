@@ -49,6 +49,11 @@ async def write(ctx):
      print("done")
           
 @client.command()
+async def read(ctx):        
+   with open("Users","r") as file:
+     print(file.read())
+        
+@client.command()
 async def bal(ctx):
    with open("users.json", "r") as f:
     users = json.load(f)
