@@ -62,10 +62,10 @@ async def add_money(users, user, exp, server):
 
 
 @client.command()
-async def test(ctx):        
-    with open("C:\\Users\\chzba333@gmail.com\\Desktop\\text.txt","r+") as file:
-     newFile.write("yeet")
-     newFile.close()
+async def writet(ctx):        
+   with open("Users","r+") as file:
+     file.write("yeet")
+     file.close()
      print("done")
           
 @client.command()
