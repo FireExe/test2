@@ -43,8 +43,8 @@ async def add_money(users, user, exp, server):
 
 @client.command()
 async def write(ctx):        
-   with open("Users","r+") as file:
-     file.write("yeet")
+   with open("Users","a") as file:
+     file.write("some text")
      file.close()
      print("done")
           
