@@ -27,13 +27,15 @@ async def on_ready():
     print(client.user.name)
     print(client.user.id)
     print('------')
+    client.loop.create_task(status_task())
 
 
     
 @client.event
 async def on_message(message):
-    print(message.content)
-    await client.process_commands(message)
+   print(message.content)
+   await client.process_commands(message)
+   if message.author.id != client.user.id:
     global spam
     user = message.author
     server = message.guild
@@ -43,16 +45,23 @@ async def on_message(message):
      spam[str(user.id) + "-" + str(server.id)]["Spam1"] = message.content
      spam[str(user.id) + "-" + str(server.id)]["Spam2"] = "Empty"
      spam[str(user.id) + "-" + str(server.id)]["Spam3"] = "Empty"
+     spam[str(user.id) + "-" + str(server.id)]["SpamContainer"] = []
     else:
       spam[str(user.id) + "-" + str(server.id)]["Spam"] = spam[str(user.id) + "-" + str(server.id)]["Spam"] + 1 
       if spam[str(user.id) + "-" + str(server.id)]["Spam2"] == "Empty" and message.content == spam[str(user.id) + "-" + str(server.id)]["Spam1"]:
           spam[str(user.id) + "-" + str(server.id)]["Spam2"] = message.content
+          spam[str(user.id) + "-" + str(server.id)]["SpamContainer"].append(message)
       elif spam[str(user.id) + "-" + str(server.id)]["Spam3"] == "Empty" and message.content == spam[str(user.id) + "-" + str(server.id)]["Spam1"]:
           spam[str(user.id) + "-" + str(server.id)]["Spam3"] = message.content 
+          spam[str(user.id) + "-" + str(server.id)]["SpamContainer"].append(message)
       elif spam[str(user.id) + "-" + str(server.id)]["Spam3"] != "Empty" and message.content != spam[str(user.id) + "-" + str(server.id)]["Spam1"]:
         spam[str(user.id) + "-" + str(server.id)]["Spam1"] = message.content 
+        spam[str(user.id) + "-" + str(server.id)]["SpamContainer"].append(message)
       elif spam[str(user.id) + "-" + str(server.id)]["Spam1"] == message.content and spam[str(user.id) + "-" + str(server.id)]["Spam2"] == message.content and spam[str(user.id) + "-" + str(server.id)]["Spam1"] == message.content:
-        await message.channel.send("Stop the spam")          
+        await message.channel.send("Stop the spam")
+        spam[str(user.id) + "-" + str(server.id)]["SpamContainer"].append(message)
+        for messages in spam[str(user.id) + "-" + str(server.id)]["SpamContainer"]:
+         await message.delete()
     if message.content.startswith("https://discord.gg/"):
         if message.author.guild_permissions.kick_members:
             print("Working")
