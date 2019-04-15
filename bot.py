@@ -62,7 +62,7 @@ async def on_message(message):
          await message.channel.send("Stop the spam")
          for m in spam[str(user.id) + "-" + str(server.id)]["Spam"]:
           m.delete()
-    if message.content.startswith("https://discord.gg/"):
+      if message.content.startswith("https://discord.gg/"):
         if message.author.guild_permissions.kick_members:
             print("Working")
         else:
