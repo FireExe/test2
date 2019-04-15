@@ -49,7 +49,7 @@ async def on_message(message):
     if not str(user.id) + "-" + str(server.id) in spam:
      spam[str(user.id) + "-" + str(server.id)] = {}
      spam[str(user.id) + "-" + str(server.id)]["Spam"] = []
-     spam[str(user.id) + "-" + str(server.id)]["Spam"].append(message.content)
+     spam[str(user.id) + "-" + str(server.id)]["Spam"].append(message)
      spam[str(user.id) + "-" + str(server.id)]["SpamLvl"] = 0
     else:
       #spam[str(user.id) + "-" + str(server.id)]["Spam"] = spam[str(user.id) + "-" + str(server.id)]["Spam"] + 1 
@@ -57,14 +57,11 @@ async def on_message(message):
        if spam == message.content:
         spam[str(user.id) + "-" + str(server.id)]["SpamLvl"] = spam[str(user.id) + "-" + str(server.id)]["SpamLvl"] + 1
         spam[str(user.id) + "-" + str(server.id)]["Spam"].append(message.content)
-      if spam[str(user.id) + "-" + str(server.id)]["SpamLvl"] < 3:
+        print(spam[str(user.id) + "-" + str(server.id)]["SpamLvl"])
+      if spam[str(user.id) + "-" + str(server.id)]["SpamLvl"] > 3:
          await message.channel.send("Stop the spam")
-         mgs = []
-         channel = message.channel
-         async for x in client.logs_from((channel), limit = int(3)):
-          if x.author == message.author:
-            mgs.append(x)
-         await delete_messages(mgs)
+         for m in spam[str(user.id) + "-" + str(server.id)]["Spam"]:
+          m.delete()
     if message.content.startswith("https://discord.gg/"):
         if message.author.guild_permissions.kick_members:
             print("Working")
