@@ -9,6 +9,16 @@ client = Bot(command_prefix=BOT_PREFIX)
 client.remove_command("help")
 spam = {}
 
+async def status_task():
+ while True:
+  await asyncio.sleep(3)
+  global spam
+  for member in spam:
+    spam[str(user.id) + "-" + str(server.id)]["Spam1"] = "Empty"
+    spam[str(user.id) + "-" + str(server.id)]["Spam2"] = "Empty"
+    spam[str(user.id) + "-" + str(server.id)]["Spam3"] = "Empty"
+  
+
 @client.event
 async def on_ready():
     activity = discord.Game(name="B-tech ES Bot")
@@ -39,8 +49,10 @@ async def on_message(message):
           spam[str(user.id) + "-" + str(server.id)]["Spam2"] = message.content
       elif spam[str(user.id) + "-" + str(server.id)]["Spam3"] == "Empty" and message.content == spam[str(user.id) + "-" + str(server.id)]["Spam1"]:
           spam[str(user.id) + "-" + str(server.id)]["Spam3"] = message.content 
-      elif spam[str(user.id) + "-" + str(server.id)]["Spam3"] != "Empty":
-        await message.channel.send("Test")          
+      elif spam[str(user.id) + "-" + str(server.id)]["Spam3"] != "Empty" and message.content != spam[str(user.id) + "-" + str(server.id)]["Spam1"]:
+        spam[str(user.id) + "-" + str(server.id)]["Spam1"] = message.content 
+      elif spam[str(user.id) + "-" + str(server.id)]["Spam1"] == message.content and spam[str(user.id) + "-" + str(server.id)]["Spam2"] == message.content and spam[str(user.id) + "-" + str(server.id)]["Spam1"] == message.content:
+        await message.channel.send("Stop the spam")          
     if message.content.startswith("https://discord.gg/"):
         if message.author.guild_permissions.kick_members:
             print("Working")
