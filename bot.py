@@ -53,8 +53,6 @@ async def on_message(message):
         spam[str(user.id) + "-" + str(server.id)]["Spam"].append(message.content)
       if spam[str(user.id) + "-" + str(server.id)]["SpamLvl"] < 3:
          await message.channel.send("Stop the spam")
-         author = ctx.message.author
-         authorID = author.id
          mgs = []
          channel = message.channel
          async for x in bot.logs_from((channel), limit = int(3)):
