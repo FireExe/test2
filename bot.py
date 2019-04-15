@@ -15,6 +15,7 @@ async def status_task():
   global spam
   server = discord.utils.get(client.guilds, name='Bot making')
   for user in spam:
+    print(user)
     user["Spam1"] = "Empty"
     user["Spam2"] = "Empty"
     user["Spam3"] = "Empty"
