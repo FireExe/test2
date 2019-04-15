@@ -13,12 +13,10 @@ async def status_task():
  while True:
   await asyncio.sleep(3)
   global spam
-  server = discord.utils.get(client.guilds, name='Bot making')
   for user in spam:
-    print(user)
-    user["Spam1"] = "Empty"
-    user["Spam2"] = "Empty"
-    user["Spam3"] = "Empty"
+    spam[user]["Spam1"] = "Empty"
+    spam[user]["Spam2"] = "Empty"
+    spam[user]["Spam3"] = "Empty"
   
 
 @client.event
