@@ -42,9 +42,9 @@ async def on_ready():
 async def on_message(message):
  await client.process_commands(message)
  if message.author.id != client.user.id:
-    global spam
-    user = message.author
-    server = message.guild
+   global spam
+   user = message.author
+   server = message.guild
    if not str(user.id) + "-" + str(server.id) in spam:
      spam[str(user.id) + "-" + str(server.id)] = {}
      spam[str(user.id) + "-" + str(server.id)]["Spam"] = []
