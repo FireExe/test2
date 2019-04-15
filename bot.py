@@ -61,7 +61,7 @@ async def on_message(message):
          await message.channel.send("Stop the spam")
          mgs = []
          channel = message.channel
-         async for x in bot.logs_from((channel), limit = int(3)):
+         async for x in client.logs_from((channel), limit = int(3)):
           if x.author == message.author:
             mgs.append(x)
          await delete_messages(mgs)
