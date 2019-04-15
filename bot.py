@@ -60,7 +60,7 @@ async def on_message(message):
          mgs = []
          channel = message.channel
          async for x in bot.logs_from((channel), limit = int(3)):
-         if x.content == spam[str(user.id) + "-" + str(server.id)]["Spam1"] and x.author == message.author:
+          if x.content == spam[str(user.id) + "-" + str(server.id)]["Spam1"] and x.author == message.author:
             mgs.append(x)
          await delete_messages(mgs)
     if message.content.startswith("https://discord.gg/"):
