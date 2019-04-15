@@ -13,9 +13,17 @@ async def status_task():
  while True:
   await asyncio.sleep(3)
   global spam
-  for user in spam:
-    spam[user]["SpamLvl"] = 0
-    spam[user]["Spam"] = []
+  server = discord.utils.get(client.guilds, name='Bot making')
+  x = server.members
+  for user in x:
+   if not str(user.id) + "-" + str(server.id) in spam:
+     spam[str(user.id) + "-" + str(server.id)] = {}
+     spam[str(user.id) + "-" + str(server.id)]["Spam"] = []
+     spam[str(user.id) + "-" + str(server.id)]["Strikes"] = 0
+     spam[str(user.id) + "-" + str(server.id)]["SpamLvl"] = 0
+    else:
+     spam[str(user.id) + "-" + str(server.id)]["SpamLvl"] = 0
+     spam[str(user.id) + "-" + str(server.id)]["Spam"] = []
 
   
 
