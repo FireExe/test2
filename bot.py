@@ -19,9 +19,8 @@ async def status_task():
    if not str(user.id) + "-" + str(server.id) in spam:
      spam[str(user.id) + "-" + str(server.id)] = {}
      spam[str(user.id) + "-" + str(server.id)]["Spam"] = []
-     spam[str(user.id) + "-" + str(server.id)]["Strikes"] = 0
      spam[str(user.id) + "-" + str(server.id)]["SpamLvl"] = 0
-    else:
+   else:
      spam[str(user.id) + "-" + str(server.id)]["SpamLvl"] = 0
      spam[str(user.id) + "-" + str(server.id)]["Spam"] = []
 
@@ -51,7 +50,6 @@ async def on_message(message):
      spam[str(user.id) + "-" + str(server.id)] = {}
      spam[str(user.id) + "-" + str(server.id)]["Spam"] = []
      spam[str(user.id) + "-" + str(server.id)]["Spam"].append(message.content)
-     spam[str(user.id) + "-" + str(server.id)]["Strikes"] = 0
      spam[str(user.id) + "-" + str(server.id)]["SpamLvl"] = 0
     else:
       #spam[str(user.id) + "-" + str(server.id)]["Spam"] = spam[str(user.id) + "-" + str(server.id)]["Spam"] + 1 
