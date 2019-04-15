@@ -116,6 +116,8 @@ async def on_message(message):
     
 @client.event
 async def on_message(message):
+    print(message.content)
+    await client.process_commands(message)
     global spam
     if not str(user.id) + "-" + str(server.id) in spam:
      spam[str(user.id) + "-" + str(server.id)]["Spam"] = 1
@@ -129,8 +131,8 @@ async def on_message(message):
       elseif spam[str(user.id) + "-" + str(server.id)]["Spam3"] == "Empty" and message.content == spam[str(user.id) + "-" + str(server.id)]["Spam1"]:
           spam[str(user.id) + "-" + str(server.id)]["Spam3"] = message.content 
       elsif spam[str(user.id) + "-" + str(server.id)]["Spam3"] != "Empty":
-        message.channel.send("Test")          
-    await client.process_commands(message)
+        await message.channel.send("Test")          
+
     if message.content.startswith("https://discord.gg/"):
         if message.author.guild_permissions.kick_members:
             print("Working")
