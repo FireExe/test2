@@ -40,7 +40,6 @@ async def on_ready():
     
 @client.event
 async def on_message(message):
-   print(message.content)
    await client.process_commands(message)
    if message.author.id != client.user.id:
     global spam
@@ -54,7 +53,8 @@ async def on_message(message):
     else:
       #spam[str(user.id) + "-" + str(server.id)]["Spam"] = spam[str(user.id) + "-" + str(server.id)]["Spam"] + 1 
       for spam in spam[str(user.id) + "-" + str(server.id)]["Spam"]:
-       if spam == message.content:
+       if spam.content == message.content:
+        print(str(spam.content)+"-"+str(message.content))
         spam[str(user.id) + "-" + str(server.id)]["SpamLvl"] = spam[str(user.id) + "-" + str(server.id)]["SpamLvl"] + 1
         spam[str(user.id) + "-" + str(server.id)]["Spam"].append(message.content)
         print(spam[str(user.id) + "-" + str(server.id)]["SpamLvl"])
