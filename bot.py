@@ -28,17 +28,17 @@ async def on_message(message):
     user = message.author
     server = message.guild
     if not str(user.id) + "-" + str(server.id) in spam:
-     spam[str(user.id) + "-" + str(server.id)]["Spam"] = 1
-     spam[str(user.id) + "-" + str(server.id)]["Spam1"] = message.content
-     spam[str(user.id) + "-" + str(server.id)]["Spam2"] = "Empty"
-     spam[str(user.id) + "-" + str(server.id)]["Spam3"] = "Empty"
+     spam[str(user.id) + "-" + str(server.id)][1] = 1
+     spam[str(user.id) + "-" + str(server.id)][2] = message.content
+     spam[str(user.id) + "-" + str(server.id)][3] = "Empty"
+     spam[str(user.id) + "-" + str(server.id)][4] = "Empty"
     else:
       spam[str(user.id) + "-" + str(server.id)] = spam[str(user.id) + "-" + str(server.id)] + 1 
-      if spam[str(user.id) + "-" + str(server.id)]["Spam2"] == "Empty" and message.content == spam[str(user.id) + "-" + str(server.id)]["Spam1"]:
-          spam[str(user.id) + "-" + str(server.id)]["Spam2"] = message.content
-      elif spam[str(user.id) + "-" + str(server.id)]["Spam3"] == "Empty" and message.content == spam[str(user.id) + "-" + str(server.id)]["Spam1"]:
-          spam[str(user.id) + "-" + str(server.id)]["Spam3"] = message.content 
-      elif spam[str(user.id) + "-" + str(server.id)]["Spam3"] != "Empty":
+      if spam[str(user.id) + "-" + str(server.id)][3] == "Empty" and message.content == spam[str(user.id) + "-" + str(server.id)][2]:
+          spam[str(user.id) + "-" + str(server.id)][3] = message.content
+      elif spam[str(user.id) + "-" + str(server.id)][4] == "Empty" and message.content == spam[str(user.id) + "-" + str(server.id)][2]:
+          spam[str(user.id) + "-" + str(server.id)][4] = message.content 
+      elif spam[str(user.id) + "-" + str(server.id)][4] != "Empty":
         await message.channel.send("Test")          
     if message.content.startswith("https://discord.gg/"):
         if message.author.guild_permissions.kick_members:
