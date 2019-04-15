@@ -50,7 +50,7 @@ async def on_message(message):
      spam[str(user.id) + "-" + str(server.id)]["Spam"] = []
      spam[str(user.id) + "-" + str(server.id)]["Spam"].append(message)
      spam[str(user.id) + "-" + str(server.id)]["SpamLvl"] = 0
-    else:
+   else:
       #spam[str(user.id) + "-" + str(server.id)]["Spam"] = spam[str(user.id) + "-" + str(server.id)]["Spam"] + 1 
       for spam in spam[str(user.id) + "-" + str(server.id)]["Spam"]:
        if spam.content == message.content:
