@@ -28,7 +28,7 @@ async def on_message(message):
     user = message.author
     server = message.guild
     if not str(user.id) + "-" + str(server.id) in spam:
-     spam[str(user.id) + "-" + str(server.id)][1] = 1
+     spam[str(user.id) + "-" + str(server.id)][int(1)] = 1
      spam[str(user.id) + "-" + str(server.id)][2] = message.content
      spam[str(user.id) + "-" + str(server.id)][3] = "Empty"
      spam[str(user.id) + "-" + str(server.id)][4] = "Empty"
