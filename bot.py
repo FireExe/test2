@@ -7,6 +7,7 @@ TOKEN = os.environ['token'] # The token is also substituted for security reasons
 
 client = Bot(command_prefix=BOT_PREFIX)
 client.remove_command("help")
+spam = []
 # this is an event which is triggered when something happens in Discord 
 # in this case on_ready() is called when the bot logs on
 #you can checkthe Discord API Documentaion for more event Functions 
@@ -112,6 +113,29 @@ async def on_message(message):
             with open("users.json", "r+") as f:
              json.dump(users, f)
     await client.process_commands(message)
+    
+@client.event
+async def on_message(message):
+    global spam
+    if not str(user.id) + "-" + str(server.id) in spam:
+     spam[str(user.id) + "-" + str(server.id)]["Spam"] = 1
+     spam[str(user.id) + "-" + str(server.id)]["Spam1"] = message.content
+     spam[str(user.id) + "-" + str(server.id)]["Spam2"] = "Empty"
+     spam[str(user.id) + "-" + str(server.id)]["Spam3"] = "Empty"
+    else:
+      spam[str(user.id) + "-" + str(server.id)] = spam[str(user.id) + "-" + str(server.id)] + 1 
+      if spam[str(user.id) + "-" + str(server.id)]["Spam2"] == "Empty" and message.content == spam[str(user.id) + "-" + str(server.id)]["Spam1"]:
+          spam[str(user.id) + "-" + str(server.id)]["Spam2"] = message.content
+      elseif spam[str(user.id) + "-" + str(server.id)]["Spam3"] == "Empty" and message.content == spam[str(user.id) + "-" + str(server.id)]["Spam1"]:
+          spam[str(user.id) + "-" + str(server.id)]["Spam3"] = message.content 
+      elsif spam[str(user.id) + "-" + str(server.id)]["Spam3"] != "Empty":
+        message.channel.send("Test")          
+    await client.process_commands(message)
+    if message.content.startswith("https://discord.gg/"):
+        if message.author.guild_permissions.kick_members:
+            print("Working")
+        else:
+            await message.delete()
              
 
 
