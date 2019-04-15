@@ -35,9 +35,9 @@ async def on_message(message):
       spam[str(user.id) + "-" + str(server.id)] = spam[str(user.id) + "-" + str(server.id)] + 1 
       if spam[str(user.id) + "-" + str(server.id)]["Spam2"] == "Empty" and message.content == spam[str(user.id) + "-" + str(server.id)]["Spam1"]:
           spam[str(user.id) + "-" + str(server.id)]["Spam2"] = message.content
-      elseif spam[str(user.id) + "-" + str(server.id)]["Spam3"] == "Empty" and message.content == spam[str(user.id) + "-" + str(server.id)]["Spam1"]:
+      elif spam[str(user.id) + "-" + str(server.id)]["Spam3"] == "Empty" and message.content == spam[str(user.id) + "-" + str(server.id)]["Spam1"]:
           spam[str(user.id) + "-" + str(server.id)]["Spam3"] = message.content 
-      elsif spam[str(user.id) + "-" + str(server.id)]["Spam3"] != "Empty":
+      elif spam[str(user.id) + "-" + str(server.id)]["Spam3"] != "Empty":
         await message.channel.send("Test")          
     if message.content.startswith("https://discord.gg/"):
         if message.author.guild_permissions.kick_members:
