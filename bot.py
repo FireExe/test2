@@ -14,8 +14,9 @@ async def status_task():
   await asyncio.sleep(3)
   global spam
   for user in spam:
-    spam[user]["Spam"] = []
     spam[user]["SpamLvl"] = 0
+    spam[user]["Spam"] = []
+
   
 
 @client.event
